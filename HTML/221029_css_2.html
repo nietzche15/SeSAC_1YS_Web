@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            div {width:100px; height:100px; border-radius:50px; position:absolute;}
+
+            #circle1 {background-color: indianred;}
+            #circle2 {background-color: aqua; position:relative;
+                left:500px;}
+            #circle3 {background-color: slateblue; position:absolute;
+                left:40px;}
+            #circle4 {background-color: bisque; position:fixed;
+                left:150px; bottom: 200px;}
+            
+            #c1 {background-color: aquamarine;}
+            #c2 {background-color: rgb(110, 110, 190); left: 50px;z-index:8;}
+            #c3 {background-color: rgb(10, 47, 35); left: 100px;}
+            #c4 {background-color: rgb(144, 185, 171); left: 150px;z-index:-3;}
+            #c5 {background-color: rgb(28, 53, 145); left: 200px;}
+
+        </style>
+    </head>
+    <body>
+        <div id="circle1"></div>
+        <div id="circle2">
+            <div id="circle3"></div>
+        </div>
+        <div id="circle4"></div>
+
+        <div id="c1"></div>
+        <div id="c2"></div>
+        <div id="c3"></div>
+        <div id="c4"></div>
+        <div id="c5"></div>
+    </body>
+</html>
