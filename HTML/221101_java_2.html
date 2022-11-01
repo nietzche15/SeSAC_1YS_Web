@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+
+            // var  a=1;
+
+            // function sesac(){
+            //     console.log("sesac hi!");
+            // }
+            // sesac();
+
+            // function sesac2( abc, text, a ){
+            //     alert( abc + " hello! " + text + "@" + a );
+            // }
+            // sesac2("홍길동","88",55);
+            // sesac2('용산');
+            // sesac2(a);
+
+            function init() {
+                console.log("init");
+            }
+            function parameter1(a) {
+                console.log(a);
+            }
+            function parameter2(a,b) {
+                console.log( a + " " + b);
+            }
+            function parameter3(a,b,c) {
+                console.log("a : " + a);
+                console.log("b : " + b);
+                console.log("c : " + c);
+            }
+
+            init();
+            parameter1();
+            parameter1(11);
+            parameter2(11,15);
+            parameter3(1,2,3);
+
+            var variable="Hello"
+            parameter3(variable,variable,variable);
+            parameter3(variable,variable);
+            parameter3(variable);
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
