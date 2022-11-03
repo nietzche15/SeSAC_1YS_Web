@@ -51,6 +51,7 @@
 
             function getData2(){
                 var p1 = document.getElementsByClassName("css1")[0];
+                var p2 = document.getElementsByClassName("css1")[1];
                 console.log( p1 );
                 console.log( p1.value );
                 console.log( p1.text );
@@ -58,7 +59,8 @@
                 console.log( p1.innerText );
                 console.log( p1.innerHTML );
 
-                p1.innerText = "<strong>p태그입니다.</strong>"
+                p1.innerText = "<strong>innerText</strong>"
+                p2.innerHTML = "<strong>innerHTML</strong>"
             }
         </script>
     </body>

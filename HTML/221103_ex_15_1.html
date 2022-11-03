@@ -7,12 +7,8 @@
             button {margin-top: 10px; margin-bottom: 10px;}
         </style>
         <script>
+            var n = 1;
             function add(){
-
-                var b1 ;
-                var b2 = document.getElementById("name").value;
-                var b3 = document.getElementById("content").value;
-
                 var today = new Date();
                 var year = today.getFullYear();
                 var month = today.getMonth()+1;
@@ -28,17 +24,15 @@
                 var td3 = document.createElement("td");
                 var td4 = document.createElement("td");
 
-                arr1 = document.getElementsByTagName("tr");
-                b1 = arr1.length;
-
-                td1.innerText = b1;
-                td2.innerText = b2;
-                td3.innerText = b3;
+                td1.innerText = n;
+                td2.innerText = document.getElementById("name").value;
+                td3.innerText = document.getElementById("content").value;
                 td4.innerText = b4;
 
                 var table = document.querySelector("table");
                 table.append(tr);
                 tr.append(td1,td2,td3,td4);
+                n = n +1;
             }
         
           
@@ -62,8 +56,6 @@
                 <td>내용</td>
                 <td>작성일</td>
             </tr>
-        </table>
-        
-        
+        </table>  
     </body>
 </html>

@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            var a,b,c,d,e = 0;
+            function onclick1(){ a= 800;}
+            function onclick2(){ b= 300;}
+            function onclick3(){ c= 200;}
+            function onclick4(){ d= 4800;}
+            function onclick5(){ e= 2400;}
+            
+        </script>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>사이즈</legend>
+                Large - 24000원
+            </fieldset>
+
+            <fieldset>
+                <legend>추가 주문</legend>
+                <input type="checkbox" id="pic" onclick="onclick1();">피클(800원)
+                <input type="checkbox" id="chi" onclick="onclick2();">칠리 소스(300원)
+                <input type="checkbox" id="dip" onclick="onclick3();">디핑 소스(200원)
+                <input type="checkbox" id="che" onclick="onclick4();">치즈스틱(4개, 4800원)
+                <input type="checkbox" id="cor" onclick="onclick5();">콘 샐러드(2400원)
+
+            
+            </fieldset>
+
+            <fieldset id="fsum">
+                <legend>합계</legend>
+            </fieldset>
+        </form>
+
+        <script>
+             var total =  a+b+c+d+e;
+        
+            var dsum = document.createElement("div");
+            var fsum = document.querySelector("#fsum");
+            fsum.append(dsum);
+            dsum.innerHTML = total + "원";
+
+        </script>
+    </body>
+</html>
