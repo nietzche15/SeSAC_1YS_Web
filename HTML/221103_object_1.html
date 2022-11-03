@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            var cat = {
+	        name:"나비", age:1, 
+	        mew:function(){
+		        return "야옹";
+	            }
+            };
+            console.log( cat );
+            console.log( cat.name );
+            console.log( cat.mew() );
+
+
+            function hello(){
+                return("안녕");
+            }
+            function hi(){
+                console.log("hi");
+            }
+            // 함수 실행하고 결과 콘솔에
+            console.log( hi() );
+            console.log( hello() );
+            console.log("--------------------------------");
+
+            var arr1 = [1,2,3,'a','b','c'];
+            var arr2 = new Array(1,2,3,'a','b','c');
+
+            console.log( arr1 );
+            console.log( arr1[0] );
+
+            console.log( arr2.indexOf('a'));
+            console.log( "length : " + arr2.length );
+           
+            arr1.push('d');
+            console.log( arr1[2] );
+            console.log( arr1 );
+            
+
+            arr1.pop();
+            console.log( arr1[2] );
+            console.log( arr1 );
+            
+
+            arr1.unshift('0');
+            console.log( arr1[2] );
+            console.log( arr1 );
+            
+
+            arr1.shift();
+            console.log( arr1[2] );
+            console.log( arr1 );
+            
+
+            console.log("--------------------------------");
+            var me = {
+                name : "홍길동",
+                gender : '0101'
+            };
+
+            console.log( me );
+            console.log( me["name"] );
+            console.log( me.gender );
+
+            me.gender = "M";
+            me["age"] = 10;
+            console.log(me);
+
+            console.log("--------------------------------");
+            var date = new Date();
+            console.log( date );
+
+            console.log( date.getYear() );
+            console.log( date.getMonth() );
+            console.log( date.getDate() );
+            console.log( date.getDay() );
+            console.log( date.getTime() );
+            console.log( date.getHours() );
+
+            console.log("--------------------------------");
+
+            console.log( Math.min() );
+            console.log( Math.min( 1, 5, -10 ) );
+            console.log( Math.min( 0, 'a', 5 ) );
+
+            console.log( Math.max( 1, 5, -10 ) );
+
+            console.log( Math.random() );
+            var min=1; var max=10;
+            console.log( Math.random() * (max-min) + min );
+
+            console.log( Math.round( 1.2 ) );
+            console.log( Math.round( -2.4 ) );
+
+            console.log( Math.floor( 3.8 ) );
+            console.log( Math.ceil( 1.2 ) );
+
+
+
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

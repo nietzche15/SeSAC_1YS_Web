@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+        <style>
+            div {margin-left: 10px; font-weight: bolder;}
+            button {margin-top: 10px; margin-bottom: 10px;}
+        </style>
+        <script>
+            function add(){
+
+                var b1 ;
+                var b2 = document.getElementById("name").value;
+                var b3 = document.getElementById("content").value;
+                var today = new Date();
+                var year = today.getFullYear();
+                var month = today.getMonth()+1;
+                var date = ('0' + today.getDate()).slice(-2);
+                var hour = today.getHours();
+                var minute = today.getMinutes();
+
+                var b4 = year + "-" + month + "-" + date + " " + hour + " : " + minute ;
+
+                var tr = document.createElement("tr");
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+
+                arr1 = document.getElementsByTagName("tr");
+                b1 = arr1.length;
+
+                td1.innerText = b1;
+                td2.innerText = b2;
+                td3.innerText = b3;
+                td4.innerText = b4;
+
+                var table = document.querySelector("table");
+                table.append(tr);
+                tr.append(td1,td2,td3,td4);
+
+                console.log( table);
+
+            }
+        
+          
+        </script>
+    </head>
+    <body>
+        <span>방명록입니다.</span><br><br>
+
+        <div>
+            작성자 <input type="text" id="name">
+        </div>
+        <div>
+            내용 <input type="text" id="content">
+        </div>
+        <button type="button" onclick="add();">작성</button>
+
+        <table border="1" cellspacing=0 cellpadding=10px style="text-align:center;">
+            <tr>
+                <td>번호</td>
+                <td>작성자</td>
+                <td>내용</td>
+                <td>작성일</td>
+            </tr>
+        </table>
+        
+        
+    </body>
+</html>

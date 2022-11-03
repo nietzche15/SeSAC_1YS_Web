@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+        <script>           
+        function imgChange(){
+            var tag = document.querySelector("img");
+            console.log( tag );
+            console.log( tag.src );
+            console.log( tag.width );
+            tag.src = "./oat.jpg";
+        }
+        function add(){
+            var li = document.createElement("li");
+            li.innerText = "새로운 li";
+            console.log( li );
+
+            var ul = document.querySelector("ul");
+            // ul.append(li,"123");
+            ul.appendChild(li);
+        }
+        function remove(){
+            //자신 선택해서 삭제하기
+            var li = document.querySelector("li");
+            li.remove();
+           
+            //부모요소 선택해서 삭제하기
+            var ul = document.querySelector("ul");
+            var li2 = document.querySelector("li");
+            ul.removeChild(li2);
+
+            // console.log( li.parentElement );
+            // li.remove();
+            // li.parentElement.removeChild();
+            // 부모요소.removeChild(자식요소)
+        }
+
+        
+
+            console.log("--------------------------------");
+        </script>
+    </head>
+    <body>
+        <img src="dog.jpg" style="width:180px; height:200px;">
+    
+        <button type="button" onclick="imgChange();">img 바꾸기</button>
+       
+        <ul>
+            <li>이름</li>
+        </ul>
+
+        <button type="button" onclick="add();">추가</button>
+        <button type="button" onclick="remove();">제거</button>
+
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+        <script>
+        function calc(){
+            var aa = document.getElementById("value1").value;
+            var bb = document.getElementById("value2").value;
+            var cc = document.getElementById("value3").value;
+            var dd;
+             
+            if(cc == "+"){
+                dd = aa + bb;
+             }else if (cc == "-"){
+                dd = aa-bb;
+             }else if (cc == "*"){
+                dd = aa*bb;
+             }else if (cc == "/"){
+                dd = Math.round(10 * aa/bb) /10 ;
+             }else{ 
+                dd = "Error!"; }
+
+                console.log(dd);
+
+            document.getElementById("value4").value = dd;
+        }           
+          
+        </script>
+    </head>
+    <body>
+        <form>
+        <span>값1 : </span><input type="text" id="value1"><br>
+        <span>값2 : </span><input type="text" id="value2"><br>
+        <span>연산자 : </span><input type="text" id="value3"><br>
+        <span>결과 : </span><input type="text" id="value4"><br>
+
+        <button type="button" onclick="calc();">계산하기</button>
+        <input type="reset">
+        </form>
+        
+    </body>
+</html>
