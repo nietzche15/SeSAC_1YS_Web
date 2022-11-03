@@ -1,17 +1,47 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <style>
+            fieldset {border: 1px solid lightgray; margin-bottom: 10px;}
+            input[type=checkbox] {accent-color:palevioletred;}
+        </style>
         <script>
-            var a,b,c,d,e = 0;
-            function onclick1(){ a= 800;}
-            function onclick2(){ b= 300;}
-            function onclick3(){ c= 200;}
-            function onclick4(){ d= 4800;}
-            function onclick5(){ e= 2400;}
-            
+            var a=b=c=d=e=0;
+
+            function click1(){ 
+                var box1=document.getElementById("pic");
+                if (box1.checked==true){a=800;
+                }else{ a=0;}}
+            function click2(){ 
+                var box2=document.getElementById("chi");
+                if (box2.checked==true){b=300;
+                }else{ b=0;}}
+            function click3(){ 
+                var box3=document.getElementById("dip");
+                if (box3.checked==true){c=200;
+                }else{ c=0;}}
+            function click4(){ 
+                var box4=document.getElementById("che");
+                if (box4.checked==true){d=4800;
+                }else{ d=0;}}
+            function click5(){ 
+                var box5=document.getElementById("cor");
+                if (box5.checked==true){e=2400;
+                }else{ e=0;}} 
+                
+
+            function sum(){
+                click1(); click2();click3(); click4();click5();
+                var total = 24000+a+b+c+d+e ;
+
+                var div = document.querySelector("div");
+                div.innerHTML = total + " 원"; 
+             }
+
         </script>
     </head>
-    <body>
+    <body onload="sum();">
+        <h1>피자 주문</h1>
         <form>
             <fieldset>
                 <legend>사이즈</legend>
@@ -20,28 +50,17 @@
 
             <fieldset>
                 <legend>추가 주문</legend>
-                <input type="checkbox" id="pic" onclick="onclick1();">피클(800원)
-                <input type="checkbox" id="chi" onclick="onclick2();">칠리 소스(300원)
-                <input type="checkbox" id="dip" onclick="onclick3();">디핑 소스(200원)
-                <input type="checkbox" id="che" onclick="onclick4();">치즈스틱(4개, 4800원)
-                <input type="checkbox" id="cor" onclick="onclick5();">콘 샐러드(2400원)
-
-            
+                <input type="checkbox" id="pic" onclick="sum();">피클(800원)
+                <input type="checkbox" id="chi" onclick="sum();">칠리 소스(300원)
+                <input type="checkbox" id="dip" onclick="sum();">디핑 소스(200원)
+                <input type="checkbox" id="che" onclick="sum();">치즈스틱(4개, 4800원)
+                <input type="checkbox" id="cor" onclick="sum();">콘 샐러드(2400원)
             </fieldset>
 
-            <fieldset id="fsum">
+            <fieldset>
                 <legend>합계</legend>
+                <div></div>
             </fieldset>
         </form>
-
-        <script>
-             var total =  a+b+c+d+e;
-        
-            var dsum = document.createElement("div");
-            var fsum = document.querySelector("#fsum");
-            fsum.append(dsum);
-            dsum.innerHTML = total + "원";
-
-        </script>
     </body>
 </html>

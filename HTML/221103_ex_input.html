@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            var a=0;
+            
+
+            function click1(){
+                var box1 = document.getElementById("cb1");
+
+                if(box1.checked = true){a=1;}
+
+                var b = document.createElement("div");
+                b.innerText = a;
+
+                var c = document.querySelector("#cb1").parentElement;
+                c.append("b");
+
+                console.log(a);
+                console.log(b);
+                console.log(c);
+            }
+
+           
+
+            
+
+
+        </script>
+    </head>
+    <body>
+        <form>
+            <div>
+                <input type="checkbox" id="cb1" onclick="click1();">banana
+            </div>
+        </form>
+    </body>
+           
+</html>
