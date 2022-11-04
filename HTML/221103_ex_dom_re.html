@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            fieldset {border: 1px solid lightgray; margin-bottom: 10px;}
+            input[type=checkbox] {accent-color:palevioletred;}
+        </style>
+        <script>
+            var total = 24000;
+
+            function click1( box1 ){ 
+                var span = document.querySelector("span");
+                var div = span.parentElement;
+                span.remove();
+                
+                if (box1.checked==true){ 
+                   total= total + Number(box1.value);
+                }else{ total = total - Number(box1.value);}
+
+                var span2 = document.createElement("span")
+                span2.innerText = total + "원";
+                div.append(span2);
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1>피자 주문</h1>
+        <form>
+            <fieldset>
+                <legend>사이즈</legend>
+                Large - 24000원
+            </fieldset>
+
+            <fieldset>
+                <legend>추가 주문</legend>
+                <input type="checkbox" value="800" onclick="click1(this);">피클(800원)
+                <input type="checkbox" value="300" onclick="click1(this);">칠리 소스(300원)
+                <input type="checkbox" value="200" onclick="click1(this);">디핑 소스(200원)
+                <input type="checkbox" value="4800" onclick="click1(this);">치즈스틱(4개, 4800원)
+                <input type="checkbox" value="2400" onclick="click1(this);">콘 샐러드(2400원)
+            </fieldset>
+
+            <fieldset>
+                <legend>합계</legend>
+                <div><span>24000원</span></div>
+            </fieldset>
+        </form>
+    </body>
+</html>
