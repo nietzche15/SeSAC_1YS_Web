@@ -4,9 +4,9 @@
         <title>Document</title>
         <script>
         function calc(){
-            var aa = document.getElementById("value1").value;
-            var bb = document.getElementById("value2").value;
-            var cc = document.getElementById("value3").value;
+            var aa = document.getElementById("val1").value;
+            var bb = document.getElementById("val2").value;
+            var cc = document.getElementById("opr").value;
             var dd;
              
             if(cc == "+"){
@@ -16,23 +16,23 @@
              }else if (cc == "*"){
                 dd = aa*bb;
              }else if (cc == "/"){
-                dd = Math.round(10 * aa/bb) /10 ;
+                dd = Math.round(100 * aa/bb) /100 ;
              }else{ 
                 dd = "Error!"; }
 
                 console.log(dd);
 
-            document.getElementById("value4").value = dd;
+            document.getElementById("rslt").value = dd;
         }           
           
         </script>
     </head>
     <body>
         <form>
-        <span>값1 : </span><input type="text" id="value1"><br>
-        <span>값2 : </span><input type="text" id="value2"><br>
-        <span>연산자 : </span><input type="text" id="value3"><br>
-        <span>결과 : </span><input type="text" id="value4"><br>
+        <span>값1 : </span><input type="text" id="val1"><br>
+        <span>값2 : </span><input type="text" id="val2"><br>
+        <span>연산자 : </span><input type="text" id="opr"><br>
+        <span>결과 : </span><input type="text" id="rslt"><br>
 
         <button type="button" onclick="calc();">계산하기</button>
         <input type="reset">
