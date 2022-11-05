@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link href="./jquery-ui-1.13.2/jquery-ui.css">
+        <style>
+            img {width:400px; height:400px;}
+            div {border-color: darkslategrey;}
+        </style>
+        <script>
+            function img_1(){
+                $("div").html('<img src="nyc_day.jpg">');
+            }
+            function img_2(){
+                $("div").html('<img src="nyc_night.webp">');
+            }
+            function img_3(){
+                $("div").html('<img src="nyc_night_2.jpg">');
+            }
+            function img_4(){
+                $("div").html('<img src="dog.jpg">');
+            }
+
+            
+        </script>
+    </head>
+    <body>
+        <div>
+            <img src="white_heart.png">
+        </div>
+        
+
+        <button type="button" onclick="img_1();">NYC day view</button>
+        <button type="button" onclick="img_2();">NYC night view</button>
+        <button type="button" onclick="img_3();">NYC night view 2</button>
+        <button type="button" onclick="img_4();">dog</button>
+
+    </body>
+</html>

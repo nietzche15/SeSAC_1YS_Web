@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <style></style>
+        <script>
+            function getData(){
+                var value1 = document.getElementById("input1");
+                console.log( value1 );
+
+                var value2 = $( "#input" ).val();
+                console.log( value2 );
+            }
+            function setData(){
+                // document.querySelector("#input1").value ='Hello';
+
+                $("input1").val('Hello');
+            }
+            function setStyle1(){
+                var p = document.querySelector("#p1");
+                p.style = "background-color:gold;"
+            }
+            function setStyle2(){
+                $("#p2").css("background-color","tomato");
+            }
+            function setStyle3(){
+                $(".pp").attr("style","background-color:yellowgreen; color:white;")
+            }
+            function changeText(){
+                console.log( $('#p1').text() )
+                $("#p1").text("Text changed");
+            }
+            function changeHTML(){
+                console.log( $('#p2').text() )
+                $("#p2").html("<strong>HTML changed</strong>");
+            }
+            function append1(){
+                document.querySelector("#p1").append("<h2>h2</h2>");
+                $('#p1').append("<h3>h3태그입니다.</h3>");
+                $('#li1').append("<li>append</li>");
+            }
+            function prepend1(){
+                $('#li1').prepend("<li>prepend</li>");
+
+            }
+            function after1(){
+                $('#li1').after("<li>after</li>");
+            }
+            function before1(){
+                $('#li1').before("<li>before</li>");
+            }
+            function remove1(){
+                $('#div1').remove();
+                // 선택자 스스로 삭제된다 
+            }
+            function empty1(){
+                $('#div2').empty();
+                // 선택자 아래 모든 자손 삭제된다
+            }
+            function parent1(){
+                $('#li1').parent().append("<li>parent_append</li>")
+               
+                console.log("$('#li1').parent()");
+                console.log("$('#li1').parent().parent()");
+                console.log("$('#li1').parent().parent().parent()");
+            }
+
+            
+
+
+        </script>
+    </head>
+    <body>
+
+        <input type="text" id="input1">
+        <p id="p1" class="pp">p1</p>
+        <p id="p2" class="pp">p2</p>
+
+        <ul id="ul1">
+            <li id="li1" style="background-color:aquamarine;">li1 기준</li>
+        </ul>
+
+        <div>0
+            <div id="div1" style="background-color:antiquewhite;">1
+                <p>2</p>
+            </div>
+            <div id="div2" style="background-color:blanchedalmond;">3
+                <p>4</p>
+                <div id="div3">5</div>
+            </div>
+        </div>
+
+
+        <hr>
+        <button type="button" onclick="getData();">get data</button>
+        <button type="button" onclick="setData();">set data</button>
+        <hr>
+
+        <button type="button" onclick="setStyle1();">style_javascript</button>
+        <button type="button" onclick="setStyle2();">style_jQuery</button>
+        <button type="button" onclick="setStyle3();">style_attr</button>
+        <hr>
+
+        <button type="button" onclick="changeText();">changeText</button>
+        <button type="button" onclick="changeHTML();">changeHTML</button>
+        <hr>
+
+        <button type="button" onclick="append1();">append</button>
+        <button type="button" onclick="prepend1();">prepend</button>
+        <button type="button" onclick="after1();">after</button>
+        <button type="button" onclick="before1();">before</button>
+        <hr>
+        
+        <button type="button" onclick="remove1();">remove</button>
+        <button type="button" onclick="empty1();">empty</button>
+
+        <button type="button" onclick="parent1();">parent</button>
+
+
+    </body>
+</html>

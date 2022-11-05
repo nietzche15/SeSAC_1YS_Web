@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link href="./jquery-ui-1.13.2/jquery-ui.css">
+        <style>
+            /* .class{background-color: pink; font-weight: bold;} */
+            div {width:100px; height:100px; text-align: center;}
+            .first {background-color:blanchedalmond;}
+            .second {background-color:paleturquoise;}
+            .third {background-color:palevioletred;}
+            .sizeup {font-size: 30px;}
+        </style>
+        <script>
+            // function addClass(){
+            //     $("div").addClass("class");
+            // }
+            // function removeClass(){
+            //     $("div").removeClass("class");
+            // }
+            // function hasClass(){
+            //     console.log($("div").hasClass("class"));
+            // }
+            // function toggleClass(){
+                
+            //     $("div").toggleClass("class");
+            // }
+            function second(){
+                $("div").switchClass("first","second",1000);
+            }
+            function sizeup(){
+                $("div").switchClass("second","sizeup",2000);
+            }
+            function third(){
+                $("div").switchClass("sizeup","third",1000);
+            }
+            function first(){
+                $("div").switchClass("third","first",200);
+            }
+
+
+            
+        </script>
+    </head>
+    <body>
+
+        <div class="first">
+            div
+        </div>
+
+
+
+        <button type="button" onclick="second();">first_second</button>
+        <button type="button" onclick="sizeup();">second_sizeup</button>
+        <button type="button" onclick="third();">sizeup_third</button>
+        <button type="button" onclick="first();">first_third</button>
+        
+
+        <!-- <div>
+            div 입니다
+        </div>
+
+        <button type="button" onclick="addClass();">addClass</button>
+        <button type="button" onclick="removeClass();">removeClass</button>
+        <button type="button" onclick="hasClass();">hasClass</button>
+        <button type="button" onclick="toggleClass();">toggleClass</button> -->
+       
+
+    </body>
+</html>
