@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script>
+
+        </script>
+
+    </head>
+    <body>
+        body tag
+        <div style="width:100px; height:100px; background-color:darkorange;" id="div1"></div>
+        <input type="text" id="input1">
+        <p id="alert"></p>
+
+        <script>
+            // $(document).ready(function(){
+            //     alert("document ready");
+            // });
+            // $(function(){
+            //     alert("ready");
+            // });
+
+            $("#div1").click(function(e){
+                console.log("div click");
+                console.log("e : ",e);
+            });
+            $("#div1").mouseover(function(e){
+                console.log("div mouseover");
+            });
+            $("#div1").hover(function(){
+                console.log("div hover");
+            },function(){
+                console.log("div hover2");
+            });
+            $(window).scroll(function(){
+                console.log("window scroll");
+            });
+
+            $("#input1").keydown(function(e){
+                console.log("input keydown " + e.currentTarget.value );
+                $("#alert").text("글자가 입력됨," + e.currentTarget.value)
+                // console.log(e);
+                // if (e.keycode==13){
+                //     console.log("enter key");
+                // }
+            });
+            $("#input1").keyup(function(e){
+                console.log("input keyup");
+            });
+            $("#input1").keypress(function(e){
+                console.log("input keypress");
+            });
+
+
+
+        </script>
+
+    </body>
+</html>
