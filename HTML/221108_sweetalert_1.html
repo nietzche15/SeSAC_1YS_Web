@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            function hi(){
+                swal({
+                    title : "Hello, stranger ?",
+                    text : "Do you know anything about Batman movies?",
+                    icon : "warning",
+                    buttons : {cancel:"Not at all", Yesss : true, },
+                    dangerMode : true,
+                })
+                .then((willDelete) => {
+                    if(willDelete){
+                        swal("Welcome !", "", "success");
+                    } else {
+                        swal( "Try one !", "Hope you get some interest on this page","warning");
+                    }
+                })};
+        </script>
+
+    </head>
+    <body onload="hi();">
+
+ 
+        
+
+    </body>
+</html>
