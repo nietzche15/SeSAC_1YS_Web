@@ -1,0 +1,38 @@
+<html>
+    <head>
+       <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+      
+    </head>
+    <body>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      <script>
+        const myChart = new Chart(ctx, {
+        data: {
+            datasets: [{
+                type: 'bar',
+                label: 'Bar Dataset',
+                data: [10, 20, 30, 40]
+            }, {
+                type: 'line',
+                label: 'Line Dataset',
+                data: [50, 50, 50, 50],
+            }],
+            labels: ['January', 'February', 'March', 'April']
+        },
+        options: options
+    });
+    
+    
+      </script>
+      
+    <script>
+     const myChart = new Chart(document.getElementById('myChart'), config );
+    
+    </script>
+
+    </body>
+</html>
