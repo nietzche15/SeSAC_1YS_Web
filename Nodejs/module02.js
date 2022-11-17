@@ -1,4 +1,8 @@
 const num = require('./module01.js');
+// { a=1, b=3 };
+
+// 구조분해 >> const { a, b } = require('./module01.js');
+
 const a = num.a;
 const b = num.b;
 
