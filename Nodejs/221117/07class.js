@@ -7,10 +7,13 @@ class Car {
         console.log("움직인다");
     }
     stop(){
-        console.log("멈춘다")
+        console.log("멈춘다");
     }
     returnColor(){
         return this.color;
+    }
+    returnIsDoor(){
+        return this.isDoor;
     }
 }
 module.exports = { Car };
