@@ -1,6 +1,18 @@
-const { Fruits, Jam, Nothin } = require('./constructor_1');
-const  Arr1  = { Fruits, Jam, Nothin };
-console.log( Arr1 );
+// const Arr1 = require('./constructor_1');
+// console.log( Arr1 );
+
+const Arr1 = require('./constructor_1');
+const { Fruits, Jam, Nothin } = Arr1;
+
+
+console.log( Fruits );
+console.log( Jam );
+console.log( Nothin );
+
+// const Fruits = Arr1.Fruits;
+// const Jam = Arr1.Jam;
+// const Nothin = Arr1.Nothin;
+console.log("----------------------");
 
 var fruit1 = new Fruits();
 console.log( fruit1 );
@@ -24,3 +36,4 @@ console.log( nothin1 );
 console.log( nothin1.a );
 console.log( nothin1.b );
 console.log( nothin1.done() );
+console.log("----------------------");

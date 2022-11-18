@@ -11,7 +11,7 @@ class Fruits {
     sweet() {
         return this.IsBitter;
     }
-};
+}
 class Jam {
     constructor(sort){
         this.sort = sort;
@@ -23,7 +23,7 @@ class Jam {
     IsJar(){
         console.log("병에 들어있다");
     }
-};
+}
 class Nothin {
     constructor(){
         let a = 8;
@@ -32,10 +32,11 @@ class Nothin {
     done(){
         return a+b;
     }
-};
-module.exports =  {Fruits} ;
-module.exports =  {Jam} ;
-module.exports = {Nothin};
+}
+const Arr1 = { Fruits, Jam, Nothin };
+console.log( Arr1 );
+
+module.exports = Arr1;
 
 
 
