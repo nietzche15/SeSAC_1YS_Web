@@ -1,5 +1,3 @@
-
-
 function func1( value, call ){
     console.log(value);
     call();
