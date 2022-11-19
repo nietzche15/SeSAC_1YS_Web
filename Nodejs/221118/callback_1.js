@@ -1,5 +1,5 @@
 const prompt = require('prompt-sync')();
-const name = prompt("What is your least favorite fruit?");
+const name = prompt("What is your least favorite fruit? ");
 
 function fruits( fruit1, fruit2, nt ){
     setTimeout( function(){

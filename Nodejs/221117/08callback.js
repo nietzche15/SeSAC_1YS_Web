@@ -9,7 +9,7 @@ func1('a', function(){
 function func2(){
     console.log("2");
 }
-func1(func2);
+func1('a', func2);
 
 // console.log( 'Start' );
 // function login( id, cb ){

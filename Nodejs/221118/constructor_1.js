@@ -26,31 +26,14 @@ class Jam {
 }
 class Nothin {
     constructor(){
-        let a = 8;
-        let b = 'name';
+        this.a = 8;
+        this.b = 'name';
     }
     done(){
-        return a+b;
+        return this.a+ this.b;
     }
 }
 const Arr1 = { Fruits, Jam, Nothin };
 console.log( Arr1 );
 
 module.exports = Arr1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = { Fruits };

@@ -9,10 +9,10 @@ console.log( Car1.returnIsDoor() );
 var Car2 = new Car('yellow');
 console.log( Car2 );
 console.log( Car2.returnColor() );
-console.log( Car2.move() );
+Car2.move();
 
 var Car3 = new Car('blue');
 console.log( Car3 );
 console.log( Car3.returnColor() );
-console.log( Car3.stop() );
+Car3.stop();
 

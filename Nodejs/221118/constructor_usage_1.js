@@ -17,7 +17,7 @@ console.log("----------------------");
 var fruit1 = new Fruits();
 console.log( fruit1 );
 console.log( fruit1.Color );
-console.log( fruit1.color('red') );
+fruit1.color('red');
 console.log( fruit1.sweet() );
 console.log("----------------------");
 
@@ -25,9 +25,9 @@ console.log("----------------------");
 var jam1 = new Jam('violet');
 console.log( jam1 );
 console.log( jam1.IsSticky );
-console.log( jam1.IsJar() );
+jam1.IsJar();
 console.log( jam1.sort );
-console.log( jam.returnSort() ); 
+console.log( jam1.returnSort() ); 
 console.log("----------------------");
 
 
