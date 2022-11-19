@@ -23,6 +23,19 @@ function getDetail( video) {
 };
 
 login( 'kim', '1234')
-.then( function(user){} )
-.then( function(videos){} )
-.then(console.log);
+.then( function(user){
+    console.log("user : ",user );
+    return getVideo(user);})
+.then( function(videos){
+    console.log("videos : ", videos );
+    return getDetail(videos);})
+.then( function(msg){
+    console.log("msg : ", msg );
+});
+
+/*
+ 바로 실행하면 pending 뜨기 때문에 
+ 값이 생긴 후 받아오도록
+ return > then 으로 chain 한다
+ */
+
