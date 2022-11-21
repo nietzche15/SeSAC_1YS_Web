@@ -4,7 +4,7 @@ function Class(msg) {
     this.name = "I am Class";
     this.message = msg;
 
-    message2 ='find me!';
+    message2 ='Find me!';
 
     this.print = function(){
         console.log(message2);
