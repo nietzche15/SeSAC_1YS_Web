@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%=title%></title>
+
+
+    </head>
+    <body>
+        ejs 파일로 만든 html
+        <img src="/static/img/white_heart.png">
+
+        <% for ( var i=0; i< data.length; i++ ) { %>
+            <div> 안녕 <%=data[i]%> </div>
+        <% } %>
+
+        <% if(true) { %>
+        <% } else if(false) { %>
+        <% } else { %>    
+        <% } %>
+        
+        <div style="color:cadetblue"><%-'<span style="color:palevioletred">안녕</span>'%>하세요</div>
+        <div style="color:cadetblue"><%='안녕'%></div>
+
+        <%-include('test.ejs')%>
+        <%=include('test.ejs')%>
+        <!-- 하위폴더에 있는 경우 '/test/test' -->
+    </body>
+</html>

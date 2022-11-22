@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
+app.set('view engine', 'ejs'); 
+//views 폴더 안의 ejs 폴더 사용
+// C:/ ~ views/@@@.ejs 
+app.use('/views', express.static(__dirname + '/views'));
+
 app.use('/static', express.static('static'));
 /*
 app.use('/public', express.static('static'));
@@ -26,6 +31,14 @@ app.get('/test', (req, res)=>{
 })
 //__dirname = C:/ ~ /221122
 
+app.get('/ejs', ( req, res)=>{
+    res.render( 'index', {
+        title : "This is index page",
+        data : ['a','b','c']
+    });
+})
+//기본 dir view폴더이기때문에 경로설정 추가로 필요X, 확장자 필요x
+// render의 두번째 인자는 객체 형태(dictionary; key-value)로 넣음 (optional)
 
 
 
