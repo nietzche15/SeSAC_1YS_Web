@@ -6,6 +6,10 @@ app.get('/', ( req, res)=>{
     res.send('Hello Express!');
 })
 
+app.get('/test', ( req, res)=>{
+    res.send('Welcome to test page');
+})
+
 app.listen( port, ()=>{
     console.log('Server port : ', port);
 })
