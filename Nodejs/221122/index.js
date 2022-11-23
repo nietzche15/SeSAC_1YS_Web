@@ -27,7 +27,7 @@ app.use(express.json());
 //json 형태(dictionary 형태와 유사)로 parsing
 
 
-
+//01
 app.get('/', ( req, res)=>{
     res.send('Hello Express!');
 })
@@ -41,6 +41,8 @@ app.get('/test', (req, res)=>{
 })
 //__dirname = C:/ ~ /221122
 
+
+//02
 app.get('/ejs', ( req, res)=>{
     res.render( 'index', {
         title : "This is index page",
@@ -50,6 +52,8 @@ app.get('/ejs', ( req, res)=>{
 //기본 dir view폴더이기때문에 경로설정 추가로 필요X, 확장자 필요x
 // render의 두번째 인자는 객체 형태(dictionary; key-value)로 넣음 (optional)
 
+
+//03
 app.get("/form", (req,res)=>{
     res.render("form");
 })
