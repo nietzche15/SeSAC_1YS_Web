@@ -5,6 +5,20 @@
         <style>
 
         </style>
+        <script>
+            function checkVal1(obj){
+                var telNum = /^\d{3}-\d{4}-\d{4}$/;
+                if (telNum.text(obj.value)===false){
+                    $('.error1').text('형식에 맞게 입력해주세요.');
+                } else { $('.error1').text(''); }
+            }
+            function checkVal2(obj){
+                var telNum = /^bat+$/;
+                if (telNum.text(obj.value)===false){
+                    $('.error2').text('형식에 맞게 입력해주세요.');
+                } else { $('.error2').text(''); }
+            }
+        </script>
 
     </head>
     <body>
@@ -12,8 +26,22 @@
             <label for="name">이름 : </label>
             <input type="text" name="name" id="name" required>
 
+            <label for="pw">비밀번호 : </label>
+            <input type="password" name="pw" id="pw" required
+                    pattern="^([a-z0-9]){8,12}$">
+
             <label for="tel">Tel : </label>
-            <input type="tel" title="HP" name="tel">
+            <input type="tel" title="HP" name="tel"
+                    pattern="^\d{3}-\d{4}-\d{4}$"
+                    oninput="checkVal1( this );" placeholder="010-0000-0000">
+            <div class="error1"></div>
+            <br>
+
+            <label for="test">ghost : </label>
+            <input type="text" name="test" id="test" pattern="^bat+$" 
+                    oninput="checkVal2( this );" placeholder="must use 'bat' in name">
+            <div class="error2"></div>
+            <br>
 
             <label for="color">차체 색상 : </label>
             <input type="color" name="color" id="color">

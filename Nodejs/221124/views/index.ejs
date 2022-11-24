@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            function sendGet(){
+                //axios get을 이용한 통신
+                var form = document.getElementById('form_info');
+                //form.name.value 로 form 내 input 값 가져올 수 있음
+                axios({
+                    method : "get", //form에서의 method
+                    url: "/form", //form에서의 action
+                    params:{ name: form.name.value}
+                }).then((res)=>{
+                    // res.data = { msg : ~~ }}
+                    //alert( res.data.msg );
+                    alert( res.data );
+                });
+            }
+            function sendPost(){
+                
+                var form = document.getElementById('form_info');
+                
+                axios({
+                    method : "post",
+                    url: "/form", 
+                    data:{ name: form.name.value }
+                }).then((res)=>{
+                    alert( res.data );
+                });
+            }
+            //params : get방식으로 보내는 value
+        </script>
+
+    </head>
+    <body>
+        <button type="button" onclick="sendGet();">Get전송</button>
+        <button type="button" onclick="sendPost();">Post전송</button>
+        <form action="/post" method="post" id="form_info">
+            이름 : <input type="text" name="name">
+            나이 : <input type="text" name="age">
+            <button>전송</button>
+        </form>
+    </body>
+</html>
