@@ -11,22 +11,22 @@ app.use( express.static('static'));
 
 
 app.get("/", ( req, res )=>{
-    res.render('app2');
+    res.render('app_fetch');
 })
 
-app.get("/ajax", (req,res)=>{
+app.get("/fetch", (req,res)=>{
     console.log(req.query);
-    res.send( req.query.id + "님, 회원가입하시겠습니까?" );
+    res.send({msg : req.query.id});
 })
 
 
-app.post("/ajax", (req,res)=>{
+app.post("/fetch", (req,res)=>{
     console.log(req.body);
    
     if( req.body.id == 'sesac'){
-        res.send( '<p style="color:red;">"id를 잘못 입력했습니다."</p>');
+        res.send( {msg :'<p style="color:red;">"id를 잘못 입력했습니다."</p>'});
     } else { 
-        res.send( '<p style="color:blue;">"로그인 성공"</p>');}  
+        res.send( {msg :'<p style="color:blue;">"로그인 성공"</p>'});}  
 })
 
 app.listen( port, ()=>{

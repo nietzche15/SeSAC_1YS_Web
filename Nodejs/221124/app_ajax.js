@@ -11,16 +11,16 @@ app.use( express.static('static'));
 
 
 app.get("/", ( req, res )=>{
-    res.render('app');
+    res.render('app_ajax');
 })
 
-app.get("/form", (req,res)=>{
+app.get("/ajax", (req,res)=>{
     console.log(req.query);
-    res.send( );
+    res.send( req.query.id + "님, 회원가입하시겠습니까?" );
 })
 
 
-app.post("/form", (req,res)=>{
+app.post("/ajax", (req,res)=>{
     console.log(req.body);
    
     if( req.body.id == 'sesac'){
