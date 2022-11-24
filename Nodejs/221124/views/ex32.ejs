@@ -3,14 +3,25 @@
         <meta charset="utf-8">
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
-            var interestArr;
+            var interestArr = new Array();
 
             function click1( box1 ){
                     if ( box1.checked==true ){
-                        console.log( box1.value );
-                        interestArr.push(box1.value.toString());
-                    } else{ console.log( box1.value ); }
-                }
+                        interestArr.push(box1.value);
+                        console.log( interestArr );
+                    } else{
+                        var index = interestArr.indexOf(box1.value);
+                        console.log( index );
+
+                        while (index>-1){
+                            interestArr.splice( index, 1);
+                            index = interestArr.indexOf(box1.value);
+                            console.log( interestArr );
+                        }                 
+                    };
+                } 
+                     
+                
 
             function sendGet(){
                 var form = document.getElementById('form1');
@@ -66,6 +77,11 @@
             </fieldset>
             <button type="button" onclick="sendGet();">회원가입</button>
         </form>
+
+        <script>
+            var ints = document.getElementsByName('interest');
+            console.log(ints);
+        </script>
 
     </body>
 </html>
