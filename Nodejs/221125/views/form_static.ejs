@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <form action="/getForm" method="GET" id="form01">
+            
+            <div>ID : <input type="text" name="id" required></div>
+            <div>PW : <input type="password" name="pw" required></div>
+
+            <fieldset>
+                <legend>Drinks</legend>
+                <input type="radio" name="drink" value="Ice Americano" id="ia">
+                    <label for="ia">Ice Americano</label>
+                <input type="radio" name="drink" value="Ice Latte" id="il">
+                    <label for="ia">Ice Latte</label>
+                <input type="radio" name="drink" value="Hot Chocolate" id="hc">
+                    <label for="ia">Hot Chocolate</label>
+                <input type="radio" name="drink" value="Hot Milktea" id="hm">
+                    <label for="ia">Hot Milktea</label>
+            </fieldset>
+
+            <div>Height : <input type="range" max="200" name="height"></div>
+            <button type="submit">get SUBMIT</button>
+        </form>
+
+
+        
+        <form action="/postForm" method="post" id="form02">
+            
+            <fieldset>
+                <legend>Personal Info</legend>
+                <div>name : <input type="text" name="name" required></div>
+
+                <div>Age : <select name="age">
+                    <%for(i=0;i<=150;i++){%>
+                        <option value="<%=i%>"><%=i%></option>
+                    <%}%>
+                </select></div>
+
+                <div>Height : <select name="height">
+                    <%for(i=100; i<=250; i++){%>
+                        <option value="<%=i%>"><%=i%></option>
+                    <%}%>
+                </select>cm</div>
+
+                <input type="radio" name="vaccinated" value="1st">1st
+                <input type="radio" name="vaccinated" value="2nd">2nd
+                <input type="radio" name="vaccinated" value="3rd">3rd
+                <input type="radio" name="vaccinated" value="higher than 3rd">Higher than 3rd
+            </fieldset>
+
+            <button type="submit">post SUBMIT</button>
+
+        </form>
+    </body>
+</html>
