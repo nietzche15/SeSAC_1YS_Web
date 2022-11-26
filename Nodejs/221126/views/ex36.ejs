@@ -9,8 +9,7 @@
                 display: flex; flex-direction: column; justify-content: center; align-items: center;}
         </style>
         <script>
-            
-            
+              
             function fileUpload(){
                 var formData = new FormData();
                 console.log('------------------');
@@ -30,9 +29,14 @@
                     console.log(response);
                     console.log(response.data);
                     console.log(response.data.path); 
-                    // document.querySelector('img').src=response.data.path;   
+                    console.log(response.data.filename);
 
-                    $('img').attr('src','/static/'+response.data.filename);
+                    // $('img').attr('src','/uploads/'+response.data.filename);
+                    //src 속성의 변경
+
+                    
+                    document.querySelector('img').src= response.data.path;
+                    //src 속성 없어도 추가됨
                 });
             } 
             
@@ -43,9 +47,10 @@
             <legend>Dynamic File Upload</legend>
             <div>아이디 : <input type="text" name="id" id="id"></div>
 
-            <input type="file" name="dynamic_userfile" id="dynamic_file"><br>
+            <input type="file" name="dynamic_userfile" id="dynamic_file" /><br />
             <button type="button" onclick="fileUpload();">Upload</button><br>
-            <img src="/static/white_heart.png" width="300">        
+            <!-- <img src="/static/white_heart.png" width="300">         -->
+            <img width="300">
         </fieldset>
             
                

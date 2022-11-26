@@ -1,4 +1,3 @@
-const { doesNotMatch } = require('assert');
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
@@ -10,7 +9,7 @@ app.use( express.urlencoded({extended:true}));
 app.use( express.json());
 
 app.use( '/views', express.static(__dirname + '/views'));
-app.use( '/static', express.static( __dirname + '/uploads'));
+app.use( '/uploads', express.static( __dirname+ '/uploads'));
 
 
 const upload = multer({
