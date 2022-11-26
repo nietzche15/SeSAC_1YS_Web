@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+    </head>
+    <body>
+        <h5> upload.single() </h5>
+        <form action="/upload-single" method="POST" enctype="multipart/form-data">
+            <input type="text" name="name">
+            <input type="file" name="userfile">
+            <input type="text" name="name2">
+            <button>upload</button>
+        </form>
+
+
+        <h5> upload.array() </h5>
+        <form action="/upload-array" method="POST" enctype="multipart/form-data">
+            <input type="file" name="userfile" multiple>
+            <button>upload</button>
+        </form>
+
+
+        <h5> upload.fields() </h5>
+        <form action="/upload-fields" method="POST" enctype="multipart/form-data">
+            <input type="file" name="userfile1">
+            <input type="file" name="userfile2">
+            <input type="file" name="userfile3">
+            <button>upload</button>
+        </form>
+
+    </body>
+</html>

@@ -9,19 +9,19 @@ app.use( express.json());
 app.use( '/views', express.static(__dirname+'views'));
 app.use( express.static('static'));
 
-app.get('/', (req,res)=>{
+app.get('/form', (req,res)=>{
     res.render('app_static_G');    
 })
 
-app.get('/form',(req,res)=>{
+app.get('/getForm',(req,res)=>{
     console.log(res.query);
     res.send('getForm success');
 })
 
-app.post('/form', (req,res)=>{
+app.post('/postForm', (req,res)=>{
     res.render('app_static_P');    
 })
-app.post('/form',(req,res)=>{
+app.post('/postForm',(req,res)=>{
     console.log(req.body);
     res.end('postForm success')
 })
