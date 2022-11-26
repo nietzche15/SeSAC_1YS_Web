@@ -20,9 +20,10 @@ const upload = multer({
         },
         filename(req,file,done){
             console.log( 'filename : ', req.body );
-            
+
             const ext = path.extname(file.originalname); //originalname 내가 올린 파일의 이름, filename 은 업로드된 새이름
-            const filename = Date.now() + ext;
+            // const filename = Date.now() + ext;
+            const filename = req.body.name + ext;
             done( null, filename ); // 최종 설정한 filename 알리기
         }
     })

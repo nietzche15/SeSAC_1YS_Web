@@ -9,7 +9,7 @@ app.set('view engine','ejs');
 app.use( express.urlencoded({extended:true}));
 app.use( express.json());
 
-app.use('/views', express.static(__dirname + '/views'));
+app.use( '/views', express.static(__dirname + '/views'));
 app.use( '/static', express.static( __dirname + '/uploads'));
 
 
@@ -19,6 +19,7 @@ const upload = multer({
             done( null, 'uploads/'); 
         },
         filename(req,file,done){
+            console.log('-------------');
             console.log('filename : ', req.body );
 
             const ext = path.extname( file.originalname );
@@ -29,16 +30,15 @@ const upload = multer({
 })
 
 app.get('/file', (req,res)=>{
-    res.render('ex35');
+    res.render('ex36');
 })
 
-app.post('/upload', upload.single('userfile'), (req,res)=>{
-    console.log( req.file );
-    console.log( req.body );
-    res.render( 'result', { data1 : req.body, data2 : req.file });
+app.post('/dynamicFile', upload.single('dynamic_userfile'), (req,res)=>{
+    console.log( 'req.file : ', req.file );
+    console.log( 'req.body : ', req.body );
+    res.send( req.file );
 })
 
 app.listen( port, ()=>{
     console.log( port + ' is connected');
-
 })

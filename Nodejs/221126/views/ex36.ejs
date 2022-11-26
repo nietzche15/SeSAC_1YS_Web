@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <title></title>
+        <style>
+            fieldset { width : 400px; background-color: aliceblue; text-align: center;
+                display: flex; flex-direction: column; justify-content: center; align-items: center;}
+        </style>
+        <script>
+            
+            
+            function fileUpload(){
+                var formData = new FormData();
+                console.log('------------------');
+                
+                const file = document.getElementById('dynamic_file');
+                formData.append('id', $('#id').val() ); // 이름이 파일보다 먼저 받아야
+                formData.append('dynamic_userfile', file.files[0]);
+
+                axios({
+                    method : 'POST',
+                    url : "/dynamicFile",
+                    data : formData,
+                    headers : {
+                        'Content-Type' : 'multipart/form-data',
+                    },
+                }).then((response)=>{
+                    console.log(response);
+                    console.log(response.data);
+                    console.log(response.data.path); 
+                    // document.querySelector('img').src=response.data.path;   
+
+                    $('img').attr('src','/static/'+response.data.filename);
+                });
+            } 
+            
+        </script>
+    </head>
+    <body> 
+        <fieldset>
+            <legend>Dynamic File Upload</legend>
+            <div>아이디 : <input type="text" name="id" id="id"></div>
+
+            <input type="file" name="dynamic_userfile" id="dynamic_file"><br>
+            <button type="button" onclick="fileUpload();">Upload</button><br>
+            <img src="/static/white_heart.png" width="300">        
+        </fieldset>
+            
+               
+    </body>
+</html>
