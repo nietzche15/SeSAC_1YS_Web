@@ -7,10 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
-        <input type="file">
-        <input type="file">
+    <h5>upload.single()</h5>
+    <form action="/single_upload" method="post" enctype="multipart/form-data">
+        <input type="text" name="name">
+        <input type="file" name="userfile">
+        <input type="text" name="name2">
+        <button type="submit">Upload</button>
+    </form>
 
+    <h5>upload.array()</h5>
+    <form action="/array_upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="userfile" multiple>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h5>upload.fields()</h5>
+    <form action="/fields_upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="userfile1">
+        <input type="file" name="userfile2">
+        <input type="file" name="userfile3">
+        <button type="submit">Upload</button>
     </form>
     
 </body>
