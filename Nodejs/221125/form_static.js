@@ -22,7 +22,8 @@ app.get('/getForm',(req,res)=>{
 
 app.post('/postForm', (req,res)=>{
     console.log( req.body );
-    res.render('form_getPost', { data : req.body, title : 'getForm Data'});    
+    res.render('form_getPost', 
+    { data : req.body, title : 'getForm Data'});   //key-value로 전송
 })
 
 app.listen( port, ()=>{
