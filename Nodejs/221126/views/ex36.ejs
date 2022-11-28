@@ -12,8 +12,6 @@
               
             function fileUpload(){
                 var formData = new FormData();
-                console.log('------------------');
-                
                 const file = document.getElementById('dynamic_file');
                 formData.append('id', $('#id').val() ); // 이름이 파일보다 먼저 받아야
                 formData.append('dynamic_userfile', file.files[0]);
@@ -25,21 +23,19 @@
                     headers : {
                         'Content-Type' : 'multipart/form-data',
                     },
-                }).then((response)=>{
-                    console.log(response);
-                    console.log(response.data);
-                    console.log(response.data.path); 
-                    console.log(response.data.filename);
+                }).then(( a )=>{ 
+                    console.log( 'a : ', a ); 
+                    return a.data.path; }) // return 잊지말기 !!!!
+                .then(( b )=>{
 
-                    // $('img').attr('src','/uploads/'+response.data.filename);
+                    console.log( 'b : ', b );
+                     // $('img').attr('src','/uploads/'+response.data.filename);
                     //src 속성의 변경
 
-                    
-                    document.querySelector('img').src= response.data.path;
+                    document.querySelector('img').src= b;
                     //src 속성 없어도 추가됨
-                });
+                });      
             } 
-            
         </script>
     </head>
     <body> 
