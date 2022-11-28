@@ -7,14 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <% if(file){ %>
-        <pre><%=JSON.stringify(file, null, 2)%></pre>
-    <% }%>
+    <script>
+        <% if(data1){ %>
+            console.log( <%=data1.data%>);
+        <% }%>
 
-    <% if(files){ %>
-        <pre><%=JSON.stringify(files, null, 2)%></pre>
-    <% }%>
-
+        <% if(data2){ %>
+            console.log(<%=data2.data%>);
+            console.log(<%=data2.files[0]%>);
+        <% }%>
+    </script>
+    
     
 </body>
 </html>

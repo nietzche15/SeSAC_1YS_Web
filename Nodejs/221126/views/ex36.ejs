@@ -16,6 +16,8 @@
                 formData.append('id', $('#id').val() ); // 이름이 파일보다 먼저 받아야
                 formData.append('dynamic_userfile', file.files[0]);
 
+                // 각각 append 하거나 new FormData(form);
+
                 axios({
                     method : 'POST',
                     url : "/dynamicFile",
