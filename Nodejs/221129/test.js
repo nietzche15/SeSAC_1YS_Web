@@ -1,3 +1,9 @@
+/*
+MySQL과 Nodejs 연결시키기
+console에서 sql문 결과 확인인
+*/
+
+
 const mysql = require('mysql');
 
 const cnn = mysql.createConnection({
