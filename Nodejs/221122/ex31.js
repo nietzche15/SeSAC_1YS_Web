@@ -26,6 +26,7 @@ app.post("/postForm", (req,res)=>{
     console.log(req.body);
     res.send('post 요청 성공!');
 })
+//같은 url로 같은 method하는 경우 먼저 기재된 것만 실행
 
 app.listen( port, ()=>{
     console.log('Server port : ', port);
