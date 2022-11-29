@@ -1,3 +1,10 @@
+/*
+MySQL과 Nodejs 연결시키기(2)
+
+webpage에서 sql문 결과 확인 > client도 확인 가능
+*/
+
+
 const express = require('express');
 const mysql = require('mysql');
 const app = express();

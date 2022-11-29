@@ -1,6 +1,7 @@
 /*
-MySQL과 Nodejs 연결시키기
-console에서 sql문 결과 확인인
+MySQL과 Nodejs 연결시키기(1)
+
+console에서 sql문 결과 확인
 */
 
 
