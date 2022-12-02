@@ -14,12 +14,6 @@ app.get("/", ( req, res )=>{
     res.render('app_axios');
 })
 
-app.get("/form", (req,res)=>{
-    console.log(req.query);
-    res.send( );
-})
-
-
 app.post("/form", (req,res)=>{
     console.log(req.body);
    

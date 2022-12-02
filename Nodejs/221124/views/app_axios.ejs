@@ -10,17 +10,7 @@
         </style>
 
         <script>
-            function sendGet(){
-                var form = document.getElementById('form2');
-                axios({
-                    method : "get", 
-                    url: "/form",
-                    params:{ name: form.name.value}
-                }).then((res)=>{
-                    alert( res.data );
-                });
-            }
-
+            
             function sendPost(){
                 var form = document.getElementById('form2');
                 axios({
