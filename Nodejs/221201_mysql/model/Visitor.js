@@ -34,15 +34,3 @@ exports.register_visitor = ( info, cb)=>{
         cb( result.insertId );
     }) 
 }
-
-exports.delete_visitor = ( info, cb)=>{
-    //info = req.body; {name: ~, comment: ~}
-    var sql = `DELETE FROM visitor where name='${info.name}';`;
-
-    cnn.query( sql, ( err, result )=>{ 
-        if (err) throw err;
-    
-        console.log('deleted_id :', result);
-        cb( result.insertId );
-    }) 
-}

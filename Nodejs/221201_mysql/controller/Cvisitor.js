@@ -13,11 +13,4 @@ exports.register = (req,res)=>{
         res.send( String(id) );
         //id : query의 결과값 > insertId
     })
-}
-
-exports.row_delete = (req,res)=>{
-    Visitor.delete_visitor( req.body, (id)=>{
-        console.log(id);
-        res.send( String(id));
-    })
 } 
