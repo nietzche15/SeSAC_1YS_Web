@@ -10,6 +10,7 @@ app.use( express.json() );
 
 const router = require('./routes'); // >> routes/index.js에서 exports한 router 받음
 /* 
+상대주소 routes 내 index.js 파일 middleware router로 사용
 경로만 지정하면 > 폴더 내 index.js 자동으로 찾음, 다른 이름의 파일 연결하고 싶다면 파일명도 입력해야함
 const router = require('./routes/test.js'); 
 */

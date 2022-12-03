@@ -7,30 +7,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>Document</title>
-    <script>
-        let form = document.getElementById('form_register');
-        function register(){
-            let data = {
-                    name : form.name.value,
-                    comment : form.comment.value,
-                };
-            axios({
-                method : 'post',
-                url : '/visitor/register',
-                data: data,
-            }).then((response)=>{
-                $('table').append(`
-                    <tr>
-                        <td>${response.data}</td>
-                        <td>${data.name}</td>
-                        <td>${data.comment}</td>
-                        <td><button type="button">수정</button></td>
-                        <td><button type="button">삭제</button></td>
-                    </tr>
-                `)
-            })
-        }
-    </script>
 </head>
 <body>
     <form id="form_register">
@@ -58,10 +34,44 @@
                 <td><%=data[i].name%></td>
                 <td><%=data[i].comment%></td>
                 <td><button type="button">수정</button></td>
-                <td><button type="button">삭제</button></td>
+                <td><button type="button" onclick="delete_visitor('<%=data[i].id%>', this);">삭제</button></td>
             </tr>
-
         <% } %>
     </table>
+
+    <script>
+        let form = document.getElementById('form_register');
+        function register(){
+            let data = {
+                    name : form.name.value,
+                    comment : form.comment.value,
+                };
+            axios({
+                method : 'post',
+                url : '/visitor/register',
+                data: data,
+            }).then((response)=>{
+                $('table').append(`
+                    <tr>
+                        <td>${response.data}</td>
+                        <td>${data.name}</td>
+                        <td>${data.comment}</td>
+                        <td><button type="button">수정</button></td>
+                        <td><button type="button">삭제</button></td>
+                    </tr>
+                `)
+            })
+        }
+
+        function delete_visitor(delete_id, element){
+            axios({
+                method : 'delete', 
+                url : '/visitor/delete',
+                data : { id : delete_id }
+            }).then((response)=>{
+                element.parentElement.parentElement.remove();
+            })
+        }
+    </script>
 </body>
 </html>

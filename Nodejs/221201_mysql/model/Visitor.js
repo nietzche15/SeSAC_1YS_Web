@@ -11,7 +11,7 @@ exports.get_visitor= (cb)=>{
     var sql = "SELECT * FROM visitor";
 
     cnn.query( sql, ( err, rows )=>{ 
-        if (err) throw err;
+        if (err) throw err; //error 발생 시 처리, 아니면 rows에 data
     
         console.log('visitors :', rows);
         cb(rows);
@@ -33,4 +33,15 @@ exports.register_visitor = ( info, cb)=>{
         console.log('insert result :', result);
         cb( result.insertId );
     }) 
+}
+
+exports.delete_visitor = ( id, cb)=>{
+    var sql = `DELETE FROM visitor WHERE id=${id};`;
+
+    cnn.query( sql, ( err, result )=>{
+        if (err) throw err;
+
+        console.log('delete result : ', result );
+        cb();
+    })
 }
