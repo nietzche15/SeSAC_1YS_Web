@@ -43,7 +43,7 @@ exports.delete_visitor = ( id, cb )=>{
 
         console.log('delete result : ', result );
         cb();
-    })
+    }) 
 }
 
 exports.get_visitor_by_id_model = ( id, cb )=>{

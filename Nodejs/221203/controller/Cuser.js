@@ -20,12 +20,12 @@ exports.signUp = (req, res)=>{
 
 exports.signIn = (req, res)=>{
     User.signIn_model( req.body, (result)=>{
-        res.send(result[0]);
+        res.send(result);
     })
 }
 
 exports.deleteInfo = (req,res)=>{
-    User.deleteInfo_model( req.body.id, (result)=>{
-        res.send(true);
+    User.deleteInfo_model( req.body.id, ()=>{
+        res.send(true); 
     })
 }

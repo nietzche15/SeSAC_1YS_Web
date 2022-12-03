@@ -42,12 +42,12 @@ exports.signIn_model = ( info , cb)=>{
 
         console.log('result :', result);
 
-        cb(result);
+        cb(result[0]);
     }); 
 }
 
-exports.deleteInfo_model = ( info, cb )=>{
-    var sql = `DELETE FROM user2 WHERE id='${info.id};'`;
+exports.deleteInfo_model = ( id, cb )=>{
+    var sql = `DELETE FROM user2 WHERE id='${id};'`;
 
     cnn.query( sql, ( err, result )=>{
         if (err) throw err;
