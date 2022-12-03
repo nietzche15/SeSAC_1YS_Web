@@ -1,7 +1,7 @@
 const express =require('express');
 const mysql = require('mysql');
 const app = express();
-const port = 8000;
+const port = 3030;
 
 app.set( 'view engine', 'ejs' );
 
@@ -10,7 +10,7 @@ app.use( express.urlencoded({ extended : false }));
 app.use( express.json() );
 
 const router = require('./routes'); 
-app.use('/visitor', router); //localhost:port/visitor가 기본 url
+app.use('/sign', router); 
 
 
 app.get('*', ( req, res )=>{
@@ -20,5 +20,5 @@ app.get('*', ( req, res )=>{
 app.listen(port, ()=>{
     console.log( port, ' is connected');
 })
-
+ 
  

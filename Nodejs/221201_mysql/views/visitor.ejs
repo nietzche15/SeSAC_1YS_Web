@@ -8,9 +8,6 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>Document</title>
     <script>
-        
-    
-
     </script>
     <style>
         .d_none {display:none;}
@@ -54,7 +51,9 @@
 
     <script>
         var form = document.getElementById('form_register');
-        
+        // global로 사용시 form 하단에 script 위치 > 상단에서 받으면 form data 없이 시작
+        // local로 넣어주는 경우에는 head에 위치해도 괜찮다
+
         let update_tr;
         function register(){
             let data = {
