@@ -19,7 +19,13 @@ exports.signUp = (req, res)=>{
 }
 
 exports.signIn = (req, res)=>{
-    User.signIn_model( req.body, (result)=>{
+    User.signIn_model( req.body.id, (result)=>{
+        res.send(result);
+    })
+}
+
+exports.checkInfo = (req,res)=>{
+    User.checkInfo_model( req.query.id, (result)=>{
         res.send(result);
     })
 }
@@ -27,5 +33,11 @@ exports.signIn = (req, res)=>{
 exports.deleteInfo = (req,res)=>{
     User.deleteInfo_model( req.body.id, ()=>{
         res.send(true); 
+    })
+}
+
+exports.updateInfo = (req,res)=>{
+    User.updateInfo_model( req.body, ()=>{
+        res.send(true);
     })
 }

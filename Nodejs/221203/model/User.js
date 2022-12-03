@@ -27,32 +27,54 @@ exports.signUp_model = ( info , cb)=>{
     cnn.query( sql, ( err, result )=>{ 
         if (err) throw err; 
 
-        console.log('result :', result);
+        console.log('signUp result :', result);
 
         cb(result);
     }); 
 }
 
 
-exports.signIn_model = ( info , cb)=>{
-    var sql = `SELECT pw FROM user2 WHERE id='${info.id}';`;
+exports.signIn_model = ( id , cb)=>{
+    var sql = `SELECT * FROM user2 WHERE id='${id}';`;
 
     cnn.query( sql, ( err, result )=>{ 
         if (err) throw err; 
 
-        console.log('result :', result);
+        console.log('signIn result :', result);
 
         cb(result[0]);
     }); 
 }
 
+exports.checkInfo_model = ( id, cb )=>{
+    var sql = `SELECT * FROM user2 WHERE id='${id}';`;
+
+    cnn.query( sql, (err, result)=>{
+        if (err) throw err;
+
+        console.log('checkInfo result: ', result);
+        cb(result[0]);
+    })
+}
+
 exports.deleteInfo_model = ( id, cb )=>{
-    var sql = `DELETE FROM user2 WHERE id='${id};'`;
+    var sql = `DELETE FROM user2 WHERE id='${id}';`;
 
     cnn.query( sql, ( err, result )=>{
         if (err) throw err;
 
         console.log('delete result : ', result );
+        cb();
+    })
+}
+
+exports.updateInfo_model = ( info, cb )=>{
+    var sql = `UPDATE user2 SET pw='${info.pw}', name='${info.name}' WHERE id='${info.id}';`;
+
+    cnn.query( sql, (err,result)=>{
+        if (err) throw err;
+
+        console.log('update result : ', result );
         cb();
     })
 }
