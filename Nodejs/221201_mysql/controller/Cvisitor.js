@@ -22,3 +22,20 @@ exports.delete = (req, res)=>{
         res.send(true);
     })
 }
+
+exports.get_visitor_by_id = (req,res)=>{
+    //req.query.id 에 해당하는 data 조회
+    //서버 응답 : 조회한 data
+    Visitor.get_visitor_by_id_model(req.query.id, (rows)=>{
+        res.send(rows);
+    })
+}
+
+exports.update_visitor = (req,res)=>{
+    //req.body data mysql에 update
+    //서버 응답 : 
+    Visitor.update_visitor( req.body, ()=>{
+        //console 보니 result에서 사용할 정보는 없어서 그대로 send
+        res.send(true);
+    })
+}

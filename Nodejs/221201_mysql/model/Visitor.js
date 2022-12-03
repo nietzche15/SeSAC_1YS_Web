@@ -23,7 +23,7 @@ exports.get_visitor= (cb)=>{
     */
 }
 
-exports.register_visitor = ( info, cb)=>{
+exports.register_visitor = ( info, cb )=>{
     //info = req.body; {name: ~, comment: ~}
     var sql = `INSERT INTO visitor (name, comment) values ('${info.name}', '${info.comment}');`;
 
@@ -35,7 +35,7 @@ exports.register_visitor = ( info, cb)=>{
     }) 
 }
 
-exports.delete_visitor = ( id, cb)=>{
+exports.delete_visitor = ( id, cb )=>{
     var sql = `DELETE FROM visitor WHERE id=${id};`;
 
     cnn.query( sql, ( err, result )=>{
@@ -43,5 +43,28 @@ exports.delete_visitor = ( id, cb)=>{
 
         console.log('delete result : ', result );
         cb();
+    })
+}
+
+exports.get_visitor_by_id_model = ( id, cb )=>{
+    var sql = `SELECT * FROM visitor WHERE id=${id};`;
+
+    cnn.query( sql, ( err, rows )=>{ 
+        if (err) throw err; 
+    
+        console.log('visitor_selected_by_id : ', rows);
+        cb(rows[0]); // rows : array로 받아와짐
+    }); 
+
+}
+
+exports.update_visitor = ( info, cb )=>{
+    var sql = `UPDATE visitor SET name='${info.name}', comment='${info.comment}' WHERE id=${info.id};`;
+
+    cnn.query( sql, (err, result)=>{
+        if (err) throw err;
+
+        console.log('update_visior : ', result);
+        cb( );
     })
 }
