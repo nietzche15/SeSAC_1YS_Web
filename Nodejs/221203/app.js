@@ -10,7 +10,7 @@ app.use( express.urlencoded({ extended : false }));
 app.use( express.json() );
 
 const router = require('./routes'); 
-app.use('/sign', router); 
+app.use('/signIn', router); 
 
 
 app.get('*', ( req, res )=>{

@@ -7,6 +7,18 @@ const cnn = mysql.createConnection({
     database : 'hibiscus',
 });
 
+exports.signIn_model = ( id , cb)=>{
+    var sql = `SELECT * FROM user2 WHERE id='${id}';`;
+
+    cnn.query( sql, ( err, result )=>{ 
+        if (err) throw err; 
+
+        console.log('signIn result :', result);
+
+        cb(result[0]);
+    }); 
+}
+
 exports.idCheck_model = (id, cb)=>{
     var sql = `SELECT * FROM user2 WHERE id='${id}';`;
 
@@ -30,19 +42,6 @@ exports.signUp_model = ( info , cb)=>{
         console.log('signUp result :', result);
 
         cb(result);
-    }); 
-}
-
-
-exports.signIn_model = ( id , cb)=>{
-    var sql = `SELECT * FROM user2 WHERE id='${id}';`;
-
-    cnn.query( sql, ( err, result )=>{ 
-        if (err) throw err; 
-
-        console.log('signIn result :', result);
-
-        cb(result[0]);
     }); 
 }
 
@@ -71,7 +70,7 @@ exports.deleteInfo_model = ( id, cb )=>{
 exports.updateInfo_model = ( info, cb )=>{
     var sql = `UPDATE user2 SET pw='${info.pw}', name='${info.name}' WHERE id='${info.id}';`;
 
-    cnn.query( sql, (err,result)=>{
+    cnn.query( sql, ( err, result )=>{
         if (err) throw err;
 
         console.log('update result : ', result );
