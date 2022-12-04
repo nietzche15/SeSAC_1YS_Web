@@ -11,9 +11,9 @@
         function idCheck(){
             var form = document.getElementById('form_info');
             axios({
-                method : 'post',
+                method : 'get',
                 url : '/signIn/signUp',
-                data : { id : form.id.value }
+                params : { id : form.id.value }
                 }).then((response)=>{
                     console.log('response.data : ', response.data);
 
@@ -92,6 +92,11 @@
         }
 
         function goSignup(){
+            var form = document.getElementById('form_info');
+            form.id.value = "";
+            form.pw.value = "";
+            form.name.value = "";
+
             $('.signIn_btn').addClass('d_none');
             $('.goSignup_btn').addClass('d_none');
 
@@ -102,6 +107,7 @@
 
         function signUp(){
             var form = document.getElementById('form_info');
+            console.log('signUp req success');
             axios({
                 method : 'post',
                 url : '/signIn/signUp/',

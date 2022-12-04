@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', controller.sign );
 router.post('/', controller.signIn );
 
-router.post('/signUp', controller.idCheck );
+router.get('/signUp', controller.idCheck );
 router.post('/signUp', controller.signUp );
 
 router.get('/deleteInfo', controller.checkInfo );
