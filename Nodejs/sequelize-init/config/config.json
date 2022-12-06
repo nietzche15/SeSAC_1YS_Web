@@ -1,0 +1,16 @@
+{
+    "development" : {
+        "host" : "localhost",
+        "database": "hibiscus",
+        "username" : "user",
+        "password" : "#hibiscuS15",
+        "dialect" : "mysql"
+    },
+    "production" : {
+        "host" : "localhost",
+        "database": "hibiscus",
+        "username" : "user",
+        "password" : "#hibiscuS15",
+        "dialect" : "mysql"
+    }
+}
