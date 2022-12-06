@@ -8,6 +8,7 @@ exports.sign = (req, res)=>{
 exports.signIn = async (req, res)=>{
 
     let result = await User.findOne({
+        attributes : ['id','pw','name'],
         where : { id : req.body.id }
     });
 
