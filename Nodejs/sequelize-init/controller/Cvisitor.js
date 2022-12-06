@@ -23,19 +23,51 @@ exports.visitor = async( req, res ) => {
     // })
 }
 
-exports.register = (req, res) => {
-    Visitor.register_visitor( req.body, function(id){
-        console.log(id);
-        res.send(String(id));
-    })
+exports.register = async (req, res) => {
+    let data = {
+        name : req.body.name,
+        comment : req.body.comment
+    }
+
+    let result = await Visitor.create(data);
+    console.log( 'register result : ', result);
+    res.send(String(result.id));
+
+    // Visitor.create(data)
+    // .then((result)=>{
+    //     console.log( 'register result : ', result);
+    //     res.send(String(result.id));
+    // })
+
+    // INSERT INTO visitor (name, comment) values ('${info.name}', '${info.comment}'
+    // Visitor.register_visitor( req.body, function(id){
+    //     console.log(id);
+    //     res.send(String(id));
+    // })
 }
 
-exports.delete = (req, res) => {
+exports.delete = async (req, res) => {
     // mysql req.body.id에 해당하는 데이터를 delete
     // 서버 응답 res.send 
-    Visitor.delete_visitor(req.body.id, function(){
-        res.send(true);
-    })
+
+    let result = await Visitor.destroy({ 
+        where : { id : req.body.id }
+    });
+    console.log('delete result : ', result);
+    res.send(true);
+
+    // Visitor.destroy({ 
+    //     where : { id : req.body.id }
+    // })
+    // .then((result)=>{
+    //     console.log('delete result : ', result);
+    //     res.send(true);
+    // })
+
+    // DELETE FROM visitor WHERE id=${req.body.id};
+    // Visitor.delete_visitor(req.body.id, function(){
+    //     res.send(true);
+    // })
 }
 
 exports.get_visitor_by_id = async (req, res) => {
@@ -60,10 +92,31 @@ exports.get_visitor_by_id = async (req, res) => {
     // });
 }
 
-exports.update_visitor = (req, res) => {
+exports.update_visitor = async (req, res) => {
     // req.body 데이터를 mysql 에 update 할 수 있도록
-    // 서버의 응답 
-    Visitor.update_visitor(req.body, function(){
-        res.send(true);
-    });
+    // 서버의 응답
+    let data = {
+        name : req.body.name,
+        comment : req.body.comment
+    } 
+
+    let result = await Visitor.update({ data },{
+        where : { id :req.body.id }
+    })
+
+    console.log('update result : ', result);
+    res.send(true);
+
+    // Visitor.update({ data },{
+    //     where : { id :req.body.id }
+    // })
+    // .then((result)=>{
+    //     console.log('update result : ', result);
+    //     res.send(true);
+    // })
+
+    // UPDATE visitor SET name='${req.body.name}', comment='${req.body.comment}' WHERE id=${req.body.id};
+    // Visitor.update_visitor(req.body, function(){
+    //     res.send(true);
+    // });
 }
