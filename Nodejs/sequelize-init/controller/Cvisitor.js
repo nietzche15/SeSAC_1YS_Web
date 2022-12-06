@@ -12,7 +12,7 @@ exports.visitor = async( req, res ) => {
     // .then(( result )=>{
     //     console.log( ' result : ', result);
     //     console.log( ' result[0].id : ', result[0].id );
-    //     //default로 dataValues로 연결됨
+    //     //default로 dataValues로 연결됨 
     //     res.render('visitor', {data:result});
     // })
 
@@ -28,7 +28,7 @@ exports.register = async (req, res) => {
         name : req.body.name,
         comment : req.body.comment
     }
-
+ 
     let result = await Visitor.create(data);
     console.log( 'register result : ', result);
     res.send(String(result.id));
@@ -100,7 +100,7 @@ exports.update_visitor = async (req, res) => {
         comment : req.body.comment
     } 
 
-    let result = await Visitor.update({ data },{
+    let result = await Visitor.update(data,{
         where : { id :req.body.id }
     })
 

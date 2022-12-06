@@ -12,7 +12,7 @@ exports.signIn = (req, res)=>{
 }
 
 exports.idCheck = (req,res)=>{
-    User.idCheck_model( req.body.id, (result)=>{
+    User.idCheck_model( req.query.id, (result)=>{
         console.log('CidCheck result : ', result );
         res.send(result);
     });    

@@ -4,12 +4,12 @@ const cnn = mysql.createConnection({
     host : 'localhost', 
     user : 'user',
     password : '#hibiscuS15',
-    database : 'hibiscus',
+    database : 'hibiscus', 
 });
 
 exports.signIn_model = ( id , cb)=>{
     var sql = `SELECT * FROM user2 WHERE id='${id}';`;
-
+ 
     cnn.query( sql, ( err, result )=>{ 
         if (err) throw err; 
 
@@ -22,7 +22,7 @@ exports.signIn_model = ( id , cb)=>{
 exports.idCheck_model = (id, cb)=>{
     var sql = `SELECT * FROM user2 WHERE id='${id}';`;
 
-    cnn.query( sql, ( err, rows )=>{ 
+    cnn.query( sql, ( err, rows )=>{  
         if (err) throw err; 
 
         console.log('rows :', rows);

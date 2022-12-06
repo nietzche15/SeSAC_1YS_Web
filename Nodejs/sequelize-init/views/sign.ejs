@@ -17,7 +17,7 @@
                 }).then((response)=>{
                     console.log('response.data : ', response.data);
 
-                    if ( response.data==true ){
+                    if (response.data==true){
                         alert('사용 중인 ID 입니다.');
                         form.id.value="";
                     }else{ 
@@ -166,7 +166,7 @@
 
                 $('form').remove();
 
-                let link ="/sign/";
+                let link ="/signIn/";
                 $('body').html('<a href=' + link + '>처음으로 돌아가기</a>' );
             })
         }
@@ -184,6 +184,7 @@
             }).then((response)=>{
                 form.id.value = "";
                 form.pw.value = "";
+                form.name.value = "";
 
                 $('#id').removeAttr('readonly');
                 $('.signIn_btn').removeClass('d_none');
