@@ -18,19 +18,26 @@
             <div>
                 NAME : <input type="text" name="name">
             </div>
-            <select name="grade">
-                <%for (i=1; i<=4; i++){%>
-                GRADE : <option value="<%=i%>"><%=i%></option>
-                <%}%>
-            </select>
-            <select name="major">
+            <div>
+                GRADE : 
+                <select name="grade">
+                    <%for (i=1; i<=4; i++){%>
+                    GRADE : <option value="<%=i%>"><%=i%></option>
+                    <%}%>
+                </select>
+            </div>
+            <div>
                 MAJOR : 
-                <option value="Engineering">Engineering</option>
-                <option value="NaturalScience">NaturalScience</option>
-                <option value="Business">Business</option>
-                <option value="Economics">Economics</option>
-            </select>
-            <input type="date" min="1980-01-01">
+                <select name="major">
+                    <option value="Engineering">Engineering</option>
+                    <option value="NaturalScience">NaturalScience</option>
+                    <option value="Business">Business</option>
+                    <option value="Economics">Economics</option>
+                </select>
+            </div>
+            <div>
+                BIRTH : <input type="date" min="1980-01-01">
+            </div>
         </fieldset>
     </form>
     <div class="enterInfo_btn">        

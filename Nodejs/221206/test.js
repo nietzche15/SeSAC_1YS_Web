@@ -9,7 +9,7 @@ app.use( express.urlencoded({ extended : false }));
 app.use( express.json() );
 
 const router = require('./routes'); 
-app.use('/test', router); 
+app.use('/test', router ); 
 
 
 app.get('*', ( req, res )=>{
