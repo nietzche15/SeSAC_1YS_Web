@@ -5,4 +5,4 @@ const router = express.Router();
 router.get('/', controller.studentInfo );
 router.post('/', controller.enterInfo );
 
-module.exports = router;
+module.exports = router; 

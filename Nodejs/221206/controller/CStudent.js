@@ -17,4 +17,4 @@ exports.enterInfo = async (req,res)=>{
     let result = await Student.create(data);
     console.log(result);
     res.send( result );
-}
+} 

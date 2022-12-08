@@ -8,7 +8,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title>Final Exam Grades</title>
     <style>
-        .d_none {display : none;}
+        .d_none { display : none; }
+        table, th, td { border: 1px solid black; }
+        fieldset {display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 20px;}
     </style>
     <script>
         function enterInfo(){
@@ -62,5 +64,31 @@
     <div class="enterInfo_btn">        
         <button type="button" onclick="enterInfo();">ENTER</button>
     </div>
+
+    <table cellpadding="10" cellspacing="1" style="margin-top: 20px;">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>GRADE</th>
+            <th>MAJOR</th>
+            <th>BIRTH</th>
+            <th>UPDATE/DELETE</th>
+        </tr>
+
+        <%for(let i=0; i<1; i++){%>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button type="button" onclick="">UPDATE</button>
+                    <button type="button" onclick="">DELETE</button>
+
+                </td>
+            </tr>
+        <%}%>
+    </table>
 </body>
 </html>
