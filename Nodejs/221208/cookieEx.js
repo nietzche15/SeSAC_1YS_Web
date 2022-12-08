@@ -20,7 +20,7 @@ app.get('/', (req,res)=>{
 })
 
 app.post('/modal',(req,res)=>{
-
+    // 쿠키 생성
     res.cookie('POPUP','1', option);
     res.send( true );
 })
