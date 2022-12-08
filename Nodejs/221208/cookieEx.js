@@ -3,14 +3,16 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
 
-
-
 app.set('view engine','ejs');
 app.use( cookieParser());
 
+var date = new Date();
+var expireDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+console.log(expireDate);
+
 const option = {
     httpOnly : true,
-    maxAge : 3600*24 ,
+    expires : expireDate ,
 }
 
 app.get('/', (req,res)=>{

@@ -35,7 +35,7 @@ app.post('/login', (req,res)=>{
     res.send('세션 생성 성공');
 })
 
-app.destroy('/logout', (req,res)=>{
+app.post('/logout', (req,res)=>{
     req.session.destroy((err)=>{
         if(err) throw err;
 
