@@ -16,7 +16,6 @@ app.use(session({
 }))
 
 app.get('/', (req,res)=>{
-    console.log(req.session)
     // if(req.session.user) res.render('sessionEx', {isLogin : true});
     // else{ res.render('sessionEx', {isLogin : false }); }
     res.render('sessionMain');
