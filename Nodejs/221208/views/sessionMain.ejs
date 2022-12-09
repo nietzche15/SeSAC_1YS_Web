@@ -11,28 +11,41 @@
     <title>Main</title>
     <style>
         .d_none {display: none;}
+        .a_pd { padding-top: 5px; padding-bottom: 5px; margin-right: 20px; background-color:lightgray;}
     </style>
 </head>
 <body>
-    <div class="logIn_btn">
-        <button type="button" onclick="logIn();">Sign In</button>
-    </div>
-    <div class="signUp_btn">
-        <button type="button" onclick="">Sign Up</button>
-    </div>
-    <div class="myInfo_btn d_none">
-        <button type="button">My Information</button>
-    </div>
-    <div class="logOut_btn d_none">
-        <button type="button" onclick="logOut();">Log Out</button>
-    </div>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="/static/1.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+            Session
+          </a>
+          <div class="justify-content-end">
+            <button type="button" class="btn btn-outline-secondary btn-sm logIn_btn" onclick="logIn();">Sign In</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm signUp_btn" onclick="">Sign Up</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm myInfo_btn d_none">My Information</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm logOut_btn d_none" onclick="logOut();">Log Out</button>
+          </div>
+        </div>
+      </nav>
+      <div class="row justify-content-end">
+        <div class="alert col-2 text-center a_pd d_none" role="alert" id="alert">
+        </div>
+      </div>
+
+      
+
+    
     <script>
         console.log("'<%=isLogin%>'", '<%=isLogin%>');
-        if ('<%=isLogin%>'=== 'true' ){
+        if ('<%=isLogin%>'!== 'false' ){
             $('.myInfo_btn').removeClass('d_none');
             $('.logOut_btn').removeClass('d_none');
             $('.logIn_btn').addClass('d_none');
             $('.signUp_btn').addClass('d_none');
+            $('#alert').removeClass('d_none');
+            $('#alert').html('Welcome, <%=sessionId%> !');
         }
         function logIn(){
             axios({
@@ -46,6 +59,8 @@
             axios({
                 method : 'post',
                 url : '/logout'
+            }).then(()=>{
+                window.location.href='/';
             })
         };
     </script>

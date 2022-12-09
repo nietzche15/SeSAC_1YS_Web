@@ -4,9 +4,10 @@ const session = require('express-session');
 const app = express();
 const port = 8000;
 
-app.set('view engine','ejs');
+app.set( 'view engine', 'ejs' );
 
-app.use( express.urlencoded({extended:true}));
+app.use( '/static', express.static('img') );
+app.use( express.urlencoded( {extended:true} ));
 app.use( express.json() );
 // app.use( '/', router );
 
@@ -18,8 +19,8 @@ app.use(session({
 }))
 
 app.get('/', (req,res)=>{
-    if(req.session.user) res.render('sessionMain', {isLogin : true});
-    else{ res.render('sessionMain', {isLogin : false }); }
+    if(req.session.user) res.render('sessionMain', {isLogin : true, sessionId : req.session.user });
+    else{ res.render('sessionMain', {isLogin : false, sessionId : req.session.user }); }
 })
 
 const user = { id : 'sesac', pw : '1234'};
@@ -29,7 +30,7 @@ app.get('/login', (req,res)=>{
 })
 
 app.post('/login', (req,res)=>{
-    console.log( 'req.session :', req.session );
+    console.log( 'logIn req.session :', req.session );
     console.log( 'req.body : ', req.body );
 
     if(req.body.id == user.id && req.body.pw == user.pw ){
@@ -42,9 +43,10 @@ app.post('/login', (req,res)=>{
 
 app.post('/logout', (req,res)=>{
     req.session.destroy((err)=>{
-        console.log( 'req.session :', req.session );
+        console.log( 'logOut req.session :', req.session );
         if(err) throw err;
-        res.redirect('/');
+
+        res.send('SUCCESS');
     })
 })
 
