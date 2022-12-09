@@ -1,6 +1,6 @@
 var express = require('express');
 var controller = require('../controller/Cuser');
-const router = express.Router(); 
+const router = express.Router();  
 
 router.get('/', controller.sign );
 router.post('/', controller.signIn );
