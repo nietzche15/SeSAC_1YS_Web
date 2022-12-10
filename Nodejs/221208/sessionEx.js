@@ -41,12 +41,14 @@ app.post('/login', (req,res)=>{
     }else{ res.send('FAIL'); }
 })
 
-app.post('/logout', (req,res)=>{
+app.get('/logout', (req,res)=>{
     req.session.destroy((err)=>{
         console.log( 'logOut req.session :', req.session );
         if(err) throw err;
 
-        res.send('SUCCESS');
+        //res.send(true);
+
+        res.redirect('/');
     })
 })
 

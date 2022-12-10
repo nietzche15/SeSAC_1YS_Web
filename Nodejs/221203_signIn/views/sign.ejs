@@ -19,7 +19,7 @@
 
                     if ( response.data==true ){
                         alert('사용 중인 ID 입니다.');
-                        form.id.value="";
+                        form.reset();
                     }else{ 
                         alert('사용 가능한 ID 입니다.');
                         $('.idCheck_btn').addClass('d_none');
@@ -93,9 +93,7 @@
 
         function goSignup(){
             var form = document.getElementById('form_info');
-            form.id.value = "";
-            form.pw.value = "";
-            form.name.value = "";
+            form.reset();
 
             $('.signIn_btn').addClass('d_none');
             $('.goSignup_btn').addClass('d_none');
@@ -165,9 +163,10 @@
                 if(response) {alert('회원탈퇴가 완료되었습니다.');}
 
                 $('form').remove();
+                window.location.href='/sign/';
+                // let link ="/sign/";
+                // $('body').html('<a href=' + link + '>처음으로 돌아가기</a>' );
 
-                let link ="/sign/";
-                $('body').html('<a href=' + link + '>처음으로 돌아가기</a>' );
             })
         }
 
@@ -182,8 +181,7 @@
                     name : form.name.value,
                 },
             }).then((response)=>{
-                form.id.value = "";
-                form.pw.value = "";
+                form.reset();
 
                 $('#id').removeAttr('readonly');
                 $('.signIn_btn').removeClass('d_none');

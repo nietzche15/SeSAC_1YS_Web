@@ -37,6 +37,32 @@ db.Visitor = require('./Visitor')( sequelize, Sequelize );
 //
 
 db.User = require('./User')( sequelize, Sequelize );
+db.Product = require('./Product')( sequelize, Sequelize );
+db.Payment = require('./Payment')( sequelize, Sequelize );
+
+db.User.hasMany(db.Payment, {
+    foreignKey : 'user_id', //user table에서의 col name
+    sourceKey : 'user_id', //
+    onDelete : 'cascade'
+});
+
+db.Payment.belongsTo( db.User, {
+    foreignKey : 'user_id', 
+    sourceKey : 'user_id',
+    onDelete : 'cascade'
+});
+
+db.Product.hasMany( db.Payment, {
+    foreignKey : 'product_id', 
+    sourceKey : 'product_id',
+    onDelete : 'cascade'
+});
+
+db.Product.belongsTo( db.Payment, {
+    foreignKey : 'product_id', 
+    sourceKey : 'product_id',
+    onDelete : 'cascade'
+});
 
 module.exports = db;
 

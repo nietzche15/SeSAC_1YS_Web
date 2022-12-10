@@ -40,7 +40,7 @@
     
     <script>
         console.log("'<%=isLogin%>'", '<%=isLogin%>');
-        if ('<%=isLogin%>'!== 'false' ){
+        if ('<%=isLogin%>' !== 'false' ){
             $('.myInfo_btn').removeClass('d_none');
             $('.logOut_btn').removeClass('d_none');
             $('.logIn_btn').addClass('d_none');
@@ -50,19 +50,20 @@
         }
         function logIn(){
             axios({
-                method : 'get',
+                method : 'get', 
                 url : '/login'
             }).then(()=>{
                 window.location.href='/login';
             })
         };
         function logOut(){
-            axios({
-                method : 'post',
-                url : '/logout'
-            }).then(()=>{
-                window.location.href='/';
-            })
+            window.location.href='/logout';
+            // axios({
+            //     method : 'get',
+            //     url : '/logout'})
+            // .then(()=>{
+            //     window.location.href='/';
+            // })
         };
     </script>
 </body>
