@@ -3,14 +3,14 @@
         "host" : "localhost",
         "database": "hibiscus",
         "username" : "user",
-        "password" : "#hibiscuS15",
+        "password" : "221229",
         "dialect" : "mysql"
     },
     "production" : {
         "host" : "localhost",
         "database": "hibiscus",
         "username" : "user",
-        "password" : "#hibiscuS15",
+        "password" : "221229",
         "dialect" : "mysql"
     }
 }

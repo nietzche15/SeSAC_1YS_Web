@@ -14,6 +14,9 @@ app.use('/signIn', router_u );
 const router_v = require("./routes/index_v");
 app.use('/visitor', router_v );
 
+const router_f = require("./routes/index_f");
+app.use('/foods', router_f );
+
 
 app.get('*', ( req, res )=>{
     res.send( '주소가 존재하지 않습니다. 다시 확인해주세요.' ); 
