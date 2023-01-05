@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import ArrState from './components/ArrState';
+import ObjState from './components/ObjState';
 
 function App() {
   // const [teacher, setTeacher] = useState('정새싹');
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <ArrState />
+      <ObjState />
     </div>
   );
 }
