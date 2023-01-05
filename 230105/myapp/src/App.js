@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import Ex1 from './components/Ex1';
+import Ex2 from './components/Ex2';
 
 function App() {
   // const [teacher, setTeacher] = useState('정새싹');
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <Ex1 />
+      <Ex2 />
     </div>
   );
 }
