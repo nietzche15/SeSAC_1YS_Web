@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import List from './components/list';
+import GetChangeObj from './components/GetChangeObj';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         userID="SeSAC"
       />
       <ClassProps name="정새싹" age="2023" nickName="사고뭉치" /> */}
-      <List />
+      <GetChangeObj />
     </div>
   );
 }
