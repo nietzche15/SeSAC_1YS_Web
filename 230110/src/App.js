@@ -1,12 +1,17 @@
 import './App.css';
-import ChangeNum2 from './components/ChangeNum2';
+import Event from './components/Event';
 
 function App() {
   return (
     <div className="App">
-      <ChangeNum2 />
+      <Event />
     </div>
   );
+  // return (
+  //   <div className="App">
+  //     <ChangeNum2 />
+  //   </div>
+  // );
   // return <MyComponent1 name="정새싹">REACT</MyComponent1>;
   // return <MyComponent2 name="정새싹">React</MyComponent2>;
   // return <Foods fruit="Watermelon" />;
