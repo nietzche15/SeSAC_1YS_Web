@@ -1,14 +1,13 @@
 // import logo from './logo.svg';
 import './App.css';
 import Ex2 from './components/Ex2';
-import ExConditional from './components/ExConditional';
-import TestUseEffect from './components/TestUseEffect';
+import ExUnmount from './components/ExUnmount';
+import ShowTimer from './components/ShowTimer';
 
 function App() {
   return (
     <div className="App">
-      <Ex2 />
-      {/* <TestUseEffect /> */}
+      <ExUnmount />
     </div>
   );
 }

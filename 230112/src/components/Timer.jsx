@@ -2,9 +2,14 @@ import React, { useEffect } from 'react';
 
 export default function Timer() {
   useEffect(() => {
-    setInterval(() => {
+    const timer = setInterval(() => {
       console.log('💎타이머 실행 중');
     }, 1000);
+
+    return () => {
+      console.log('🐢타이머 종료');
+      clearInterval(timer);
+    };
   }, []);
   return (
     <>
