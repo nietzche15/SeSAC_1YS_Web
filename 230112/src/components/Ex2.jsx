@@ -10,24 +10,13 @@ export default function Ex2() {
 
   const checkAnswer = () => {
     let answer =
-      calc === '+'
-        ? num1 + num2
-        : calc === '-'
-        ? num1 - num2
-        : calc === '*'
-        ? num1 * num2
-        : false;
+      calc === '+' ? num1 + num2 : calc === '-' ? num1 - num2 : num1 * num2;
 
-    // answer === resultValue.current.value
-    //   ? (alert('정답입니다!'), setAgain(!again))
-    //   : alert('틀렸습니다. 다시 입력해주세요');
+    /* eslint-disable */
+    Number(resultValue.current.value) === answer
+      ? (alert('정답입니다!'), setAgain(!again))
+      : alert('틀렸습니다. 다시 입력해주세요');
 
-    if (resultValue.current.value == answer) {
-      alert('정답입니다!');
-      setAgain(!again);
-    } else {
-      alert('틀렸습니다. 다시 입력해주세요');
-    }
     resultValue.current.value = '';
     resultValue.current.focus();
   };
