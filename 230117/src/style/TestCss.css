@@ -1,0 +1,13 @@
+div.component-root {
+  background-color: paleturquoise;
+}
+
+div.component-root h1 {
+  color: slateblue;
+}
+
+div.component-root span {
+  background-color: deeppink;
+  color: white;
+  font-weight: 800;
+}
