@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './store';
+import { configureStore } from '@reduxjs/toolkit';
 
 // let weight = 100;
 
@@ -21,7 +22,10 @@ import rootReducer from './store';
 // let store = createStore(reducer);
 const reduxDevTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-const store = createStore(rootReducer);
+const store = configureStore({ reducer: rootReducer }, reduxDevTools);
+// console.log(store.getState());
+
+// const store = createStore(rootReducer);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,10 +1,12 @@
 import './App.css';
 import Event from './components/Event';
+import MultiInputs from './components/MultiInputs';
+import MultiInputs2 from './components/MultiInputs2';
 
 function App() {
   return (
     <div className="App">
-      <Event />
+      <MultiInputs2 />
     </div>
   );
   // return (
