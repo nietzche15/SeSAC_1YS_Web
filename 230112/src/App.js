@@ -1,14 +1,11 @@
 // import logo from './logo.svg';
 import './App.css';
-import Comparing from './components/Comparing';
-import Ex2 from './components/Ex2';
-import ExUnmount from './components/ExUnmount';
-import ShowTimer from './components/ShowTimer';
+import Comparing_1 from './components/Comparing_1';
 
 function App() {
   return (
     <div className="App">
-      <Comparing />
+      <Comparing_1 />
     </div>
   );
 }

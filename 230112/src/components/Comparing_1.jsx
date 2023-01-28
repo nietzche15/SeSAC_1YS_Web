@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-const Comparing = () => {
+const Comparing_1 = () => {
   const [countState, setState] = useState(0);
   const [render, setRender] = useState(0);
   const countRef = useRef(0);
@@ -38,4 +38,4 @@ const Comparing = () => {
   );
 };
 
-export default Comparing;
+export default Comparing_1;
