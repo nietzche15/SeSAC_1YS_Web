@@ -1,0 +1,145 @@
+<html>
+  <head>
+    <title>socket</title>
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      #chatBG {
+        width: 600px;
+        height: 1000px;
+        background-color: lightsteelblue;
+        position: relative;
+      }
+      #chatIntro {
+        height: 50px;
+        text-align: center;
+        font-style: italic;
+      }
+      #chatBox {
+        height: 900px;
+        overflow-y: auto;
+      }
+
+      .chatServer {
+        text-align: start;
+        margin: 5px 10px 5px 10px;
+        padding: 5px 10px 5px 10px;
+        background-color: lightgray;
+        width: fit-content;
+      }
+      .chatUserBox {
+        text-align: right;
+      }
+      .chatUser {
+        display: inline-block;
+        margin: 5px 10px 5px 10px;
+        padding: 5px 10px 5px 10px;
+        background-color: goldenrod;
+        /* width: fit-content; */
+      }
+      .chatDM {
+        text-align: start;
+        margin: 5px 10px 5px 10px;
+        padding: 5px 10px 5px 10px;
+        background-color: lightpink;
+        width: fit-content;
+      }
+      #inputBox {
+        position: absolute;
+        bottom: 10px;
+      }
+      #chatInput {
+        width: 520px;
+        height: 50px;
+        margin-left: 10px;
+      }
+      #chatInputBtn {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <h2>Socket.io 사용하기</h2>
+
+    <button onclick="Ex1('hello')">hello</button>
+    <button onclick="Ex1('study')">study</button>
+    <button onclick="Ex1('bye')">bye</button>
+    <h2 id="showTxt"></h2> -->
+
+    <div id="chatBG">
+      <div id="chatIntro"></div>
+      <div id="chatBox"></div>
+      <div id="inputBox">
+        <button onclick="showNameList()">DM</button>
+        <input type="text" id="chatInput" />
+        <button onclick="sendChat()" id="chatInputBtn">SEND</button>
+      </div>
+    </div>
+
+    <script>
+      // 메세지 보내기 : socket.emit("이벤트명", data)
+      // 메세지 받기 : socket.on("이벤트명", (data) => {})
+
+      // 클라이언트 소켓 생성 후 연결
+      let socket = io.connect();
+      let myNickName;
+      let myId = socket.id;
+
+      socket.on('connect', () => {
+        console.log('server connected');
+      });
+
+      socket.on('notice', (data) => {
+        document.getElementById('chatIntro').innerText = data.msg;
+        myNickName = data.nickName;
+      });
+
+      const sendChat = () => {
+        socket.emit('sendChat', {
+          user_id: myNickName,
+          msg: document.getElementById('chatInput').value,
+        });
+      };
+
+      socket.on('getChat', (data) => {
+        document
+          .getElementById('chatBox')
+          .insertAdjacentHTML(
+            'beforeend',
+            `<div class='chatUserBox'><div class='chatUser'>${data.msg}</div></div>`
+          );
+      });
+
+      const showNameList = () => {
+        socket.on('nickNameList', (data) => {});
+      };
+
+      socket.on('directMsg', (msg) => {
+        document
+          .getElementById('chatBox')
+          .insertAdjacentHTML(
+            'beforeend',
+            `<div><div class='chatDM'>${msg}</div></div>`
+          );
+      });
+      //   socket.on('welcome', (data) => {
+      //     console.log(data.msg);
+      //     socket.emit('response', 'hello');
+      //   });
+
+      function Ex1(str) {
+        socket.emit('Ex1', { msg: `client ${str}` });
+      }
+
+      //   socket.on('response', (str) => {
+      //     // document.writeIn(`${str}`); 함수 안에서 부르면 새 창에 나타남
+      //     document.getElementById('showTxt').innerText = `${str}`;
+      //     console.log(str);
+      //   });
+    </script>
+  </body>
+</html>
