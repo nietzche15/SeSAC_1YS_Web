@@ -3,8 +3,9 @@
   height: 1000px;
   background-color: lightsteelblue;
   position: relative;
+  text-align: center;
 }
-#chatIntro {
+.chatIntro {
   height: 50px;
   text-align: center;
   font-style: italic;
@@ -48,49 +49,45 @@
   width: fit-content;
 }
 
-/* 일반 Chat Box */
-#inputBox {
-  position: absolute;
-  bottom: 10px;
-  padding: 0 10px 0 10px;
-}
-#directBtn {
-  width: 50px;
-  height: 50px;
-}
-#chatInput {
-  width: 450px;
-  height: 50px;
-  margin: 0 10px 0 10px;
-}
-#chatInputBtn {
-  width: 50px;
-  height: 50px;
-}
-
-/* DM Chat Box */
+/* Chat Box 동일 항목 */
+#inputBox,
 #DMinputBox {
   position: absolute;
   bottom: 10px;
   padding: 0 10px 0 10px;
 }
+
+#DMinputBox *,
+#inputBox * {
+  height: 50px;
+}
+
+/* 일반 Chat Box */
+#directBtn {
+  width: 50px;
+}
+#chatInput {
+  width: 450px;
+  margin: 0 10px 0 10px;
+}
+#chatInputBtn {
+  width: 50px;
+}
+
+/* DM Chat Box */
 #XdirectBtn {
   width: 40px;
-  height: 50px;
   margin-right: 5px;
 }
 #selectDM {
   width: 75px;
-  height: 50px;
 }
 #DMchatInput {
   width: 390px;
-  height: 50px;
   margin: 0 5px 0 5px;
 }
 #DMchatInputBtn {
   width: 50px;
-  height: 50px;
 }
 
 .App {
