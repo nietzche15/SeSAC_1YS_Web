@@ -27,17 +27,17 @@
         text-align: start;
         margin: 5px 10px 5px 10px;
         padding: 5px 10px 5px 10px;
-        background-color: lightgray;
+        background-color: ghostwhite;
         width: fit-content;
       }
       .chatUserBox {
         text-align: right;
       }
-      .chatUser {
+      .chatUserBox > div {
         display: inline-block;
         margin: 5px 10px 5px 10px;
         padding: 5px 10px 5px 10px;
-        background-color: goldenrod;
+        background-color: palegoldenrod;
         /* width: fit-content; */
       }
       .chatDM {
@@ -110,7 +110,7 @@
           .getElementById('chatBox')
           .insertAdjacentHTML(
             'beforeend',
-            `<div class='chatUserBox'><div class='chatUser'>${data.msg}</div></div>`
+            `<div class='chatUserBox'><div>${data.msg}</div></div>`
           );
       });
 

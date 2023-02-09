@@ -7,15 +7,15 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-const nickName = ['만두', '짬뽕', '짜장'];
-let nickNameList = { 만두: '', 짬뽕: '', 짜장: '' };
+let nickNameList = {};
+let cnt = 0;
 
 // 클라이언트 소켓이 연결이 되면 콜백 함수가 실행된다.
 // socket : 클라이언트 소켓과 연결 되고 새로 생성된 소켓
 io.on('connection', (socket) => {
-  let myNickName = nickName[~~(Math.random() * 2.99)];
+  cnt++;
+  let myNickName = '익명' + cnt;
   nickNameList[myNickName] = socket.id;
-  console.log(nickNameList);
 
   io.emit('nickNameList', nickNameList);
 
