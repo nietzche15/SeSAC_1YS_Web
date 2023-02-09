@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import './App.css';
 
 let socket = io.connect('http://localhost:8000');
@@ -118,10 +119,10 @@ function App() {
           >
             X
           </Button>
-          <select ref={selectDM} id="selectDM">
+          <Form.Select ref={selectDM} id="selectDM">
             {showNameList()}
-          </select>
-          <input
+          </Form.Select>
+          <Form.Control
             ref={DMchatInput}
             type="text"
             id="DMchatInput"
@@ -145,9 +146,9 @@ function App() {
           >
             DM
           </Button>
-          <input
-            ref={chatInput}
+          <Form.Control
             type="text"
+            ref={chatInput}
             id="chatInput"
             onKeyDown={enterSendChat}
           />

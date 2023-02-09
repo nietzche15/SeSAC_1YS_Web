@@ -64,30 +64,27 @@
 
 /* 일반 Chat Box */
 #directBtn {
-  width: 50px;
+  width: 60px;
 }
 #chatInput {
   width: 450px;
-  margin: 0 10px 0 10px;
 }
 #chatInputBtn {
-  width: 50px;
+  width: 60px;
 }
 
 /* DM Chat Box */
 #XdirectBtn {
-  width: 40px;
-  margin-right: 5px;
+  width: 20px;
 }
 #selectDM {
-  width: 75px;
+  width: 90px;
 }
 #DMchatInput {
   width: 390px;
-  margin: 0 5px 0 5px;
 }
 #DMchatInputBtn {
-  width: 50px;
+  width: 60px;
 }
 
 .App {
