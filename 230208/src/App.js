@@ -3,6 +3,10 @@ import { io } from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import './App.css';
 
 let socket = io.connect('http://localhost:8000');
@@ -110,8 +114,10 @@ function App() {
 
       {/* DM O 입력창 */}
       {direct && (
-        <div id="DMinputBox">
+        <InputGroup as={Row} id="DMinputBox">
           <Button
+            as={Col}
+            md={1}
             variant="light"
             ref={exitDMBtn}
             onClick={showDM}
@@ -119,25 +125,38 @@ function App() {
           >
             X
           </Button>
-          <Form.Select ref={selectDM} id="selectDM">
-            {showNameList()}
-          </Form.Select>
-          <Form.Control
-            ref={DMchatInput}
-            type="text"
-            id="DMchatInput"
-            onKeyDown={enterSendDM}
-          />
-          <Button variant="light" onClick={sendDM} id="DMchatInputBtn">
+          <Col md="2">
+            <Form.Select ref={selectDM} id="selectDM">
+              <option value="none">선택</option>
+              {showNameList()}
+            </Form.Select>
+          </Col>
+          <Col md="7">
+            <Form.Control
+              ref={DMchatInput}
+              as="input"
+              id="DMchatInput"
+              onKeyDown={enterSendDM}
+            />
+          </Col>
+          <Button
+            as={Col}
+            md={2}
+            variant="secondary"
+            onClick={sendDM}
+            id="DMchatInputBtn"
+          >
             SEND
           </Button>
-        </div>
+        </InputGroup>
       )}
 
       {/* DM X 입력창 */}
       {direct || (
-        <div id="inputBox">
+        <InputGroup as={Row} id="inputBox">
           <Button
+            as={Col}
+            md={2}
             variant="light"
             onClick={() => {
               setDirect(!direct);
@@ -147,15 +166,23 @@ function App() {
             DM
           </Button>
           <Form.Control
-            type="text"
+            as={Col}
+            md={8}
+            as="input"
             ref={chatInput}
             id="chatInput"
             onKeyDown={enterSendChat}
           />
-          <Button variant="light" onClick={sendChat} id="chatInputBtn">
+          <Button
+            as={Col}
+            md={2}
+            variant="secondary"
+            onClick={sendChat}
+            id="chatInputBtn"
+          >
             SEND
           </Button>
-        </div>
+        </InputGroup>
       )}
     </div>
   );
