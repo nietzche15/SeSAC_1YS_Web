@@ -1,22 +1,25 @@
 const express = require('express');
 const app = express();
-
-//Starts the server
-
-let server = app.listen(4000, function () {
-  console.log('Server is running');
-});
-
-app.use(express.static('public'));
-
-//Upgrades the server to accept websockets.
-
-const io = require('socket.io')(server, {
+const http = require('http').Server(app);
+const io = require('socket.io')(http, {
   cors: {
     origin: '*',
     credentials: true,
   },
 });
+
+//Starts the server
+
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '../src/App.js');
+});
+
+//Upgrades the server to accept websockets.
+let roomList = {}; // roomName - roomUser
+let roomUser = {}; // socektid - roomName
+
 //Triggered when a client is connected.
 
 io.on('connection', function (socket) {
@@ -30,17 +33,31 @@ io.on('connection', function (socket) {
 
     //room == undefined when no such room exists.
     if (room == undefined) {
+      roomUser[socket.id] = roomName + '-C';
+      roomList[roomName] = [socket.id];
+      console.log('create:', roomUser, roomList);
       socket.join(roomName);
       socket.emit('created');
     } else if (room.size <= 8) {
       //room.size == 1 when one person is inside the room.
+      roomUser[socket.id] = roomName + '-' + room?.size;
+      roomList[roomName].push(socket.id);
+      console.log('join:', room?.size, roomUser, roomList);
+
       socket.join(roomName);
-      socket.emit('joined');
+      socket.emit('joined', {
+        joinId: roomUser[socket.id],
+      });
     } else {
       //when there are already eight people inside the room.
       socket.emit('full');
     }
-    console.log(rooms);
+    console.log('rooms: ', rooms);
+    io.to(roomName).emit('notice', {
+      roomSize: room?.size || 0,
+      roomUser: roomUser || false,
+      roomList: roomList || false,
+    });
   });
 
   //Triggered when the person who joined the room is ready to communicate.
@@ -51,7 +68,7 @@ io.on('connection', function (socket) {
   //Triggered when server gets an icecandidate from a peer in the room.
 
   socket.on('candidate', function (candidate, roomName) {
-    console.log(candidate);
+    // console.log('candidate: ', candidate);
     socket.broadcast.to(roomName).emit('candidate', candidate); //Sends Candidate to the other peer in the room.
   });
 
@@ -66,4 +83,15 @@ io.on('connection', function (socket) {
   socket.on('answer', function (answer, roomName) {
     socket.broadcast.to(roomName).emit('answer', answer); //Sends Answer to the other peer in the room.
   });
+
+  socket.on('disconnect', () => {
+    console.log('User Disconnected :' + socket.id);
+    console.log('check:', roomUser[socket.id]?.slice(0, -2));
+    socket.leave(socket.id);
+    delete roomUser[socket.id];
+  });
+});
+
+http.listen(4000, () => {
+  console.log('Server port : ', 4000);
 });

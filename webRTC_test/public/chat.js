@@ -98,7 +98,7 @@ socket.on('ready', function () {
     rtcPeerConnection.addTrack(userStream.getTracks()[0], userStream);
     rtcPeerConnection.addTrack(userStream.getTracks()[1], userStream);
     rtcPeerConnection
-      .createOffer()
+      .createOffer();
       .then((offer) => {
         rtcPeerConnection.setLocalDescription(offer);
         socket.emit('offer', offer, roomName);
