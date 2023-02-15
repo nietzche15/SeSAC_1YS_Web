@@ -8,10 +8,14 @@ let roomName;
 let creator = false;
 let rtcPeerConnection;
 let userStream;
-let roomList;
-let roomUser;
+let userToRoom;
+let roomToUser;
 let joinId;
 let roomSize;
+let CONSTRAINTS = {
+  audio: true,
+  video: { width: 640, height: 360 },
+};
 
 let iceServers = {
   iceServers: [
@@ -25,12 +29,12 @@ function App() {
   const roomInput = useRef();
   const userVideo = useRef();
   const userName = useRef();
-  const peerVideo0 = useRef();
-  const peerName0 = useRef();
   const peerVideo1 = useRef();
   const peerName1 = useRef();
   const peerVideo2 = useRef();
   const peerName2 = useRef();
+  const peerVideo3 = useRef();
+  const peerName3 = useRef();
 
   const clickJoinBtn = () => {
     console.log('roomInput.current.value: ', roomInput.current.value);
@@ -42,15 +46,15 @@ function App() {
   };
 
   useEffect(() => {
-    socket.on('created', () => {
-      console.log('created');
+    // first user
+    socket.on('created', (data) => {
       creator = true;
 
+      const { roomSize, userToRoom, roomToUser } = data;
+      console.log('created', roomSize, userToRoom, roomToUser);
+
       navigator.mediaDevices
-        .getUserMedia({
-          audio: true,
-          video: { width: 640, height: 360 },
-        })
+        .getUserMedia(CONSTRAINTS)
         .then(function (stream) {
           console.log('stream: ', stream);
           /* use the stream */
@@ -64,25 +68,22 @@ function App() {
           /* handle the error */
           alert("Couldn't Access User Media");
         });
-      userName.current.innerHTML = `<div>ID : ${roomUser[socket.id]}</div>`;
+      userName.current.innerHTML = `<div>ID : ${userToRoom[socket.id]}</div>`;
     });
     socket.on('notice', (data) => {
-      roomSize = data.roomSize;
-      roomUser = data.roomUser;
-      roomList = data.roomList;
-      console.log('notice: ', roomSize, roomUser, roomList);
+      const { roomSize, userToRoom, roomToUser } = data;
+      console.log('notice: ', roomSize, userToRoom, roomToUser);
     });
+
+    /// joined user
     socket.on('joined', (data) => {
-      console.log('joined');
       creator = false;
-      joinId = data.joinId;
-      console.log('joinId:', joinId);
+      const { joinId, roomSize, userToRoom, roomToUser } = data;
+      console.log('joined:', joinId, roomSize, userToRoom, roomToUser);
+      console.log('jid : sckid ::: ', joinId, socket.id);
 
       navigator.mediaDevices
-        .getUserMedia({
-          audio: true,
-          video: { width: 640, height: 360 },
-        })
+        .getUserMedia(CONSTRAINTS)
         .then(function (stream) {
           /* use the stream */
           userStream = stream;
@@ -90,7 +91,7 @@ function App() {
           userVideo.current.onloadedmetadata = function (e) {
             userVideo.current.play();
           };
-          userName.current.innerHTML = `<div>ID2 : ${joinId}</div>`;
+          userName.current.innerHTML = `<div>ID2 : ${userToRoom[joinId]}</div>`;
           socket.emit('ready', roomName);
         })
         .catch(function (err) {
@@ -100,15 +101,16 @@ function App() {
     });
     socket.on('notice', (data) => {
       roomSize = data.roomSize;
-      roomUser = data.roomUser;
-      roomList = data.roomList;
-      console.log('notice: ', roomSize, roomUser, roomList);
+      userToRoom = data.userToRoom;
+      roomToUser = data.roomToUser;
+      console.log('notice: ', roomSize, userToRoom, roomToUser);
     });
 
     socket.on('full', function () {
       alert("Room is Full, Can't Join");
     });
 
+    // ---[2]
     socket.on('ready', function () {
       if (creator) {
         rtcPeerConnection = new RTCPeerConnection(iceServers);
@@ -129,12 +131,13 @@ function App() {
         console.log('ready rtcPeerConnection: ', rtcPeerConnection);
       }
     });
+    // ---[2-1]
     socket.on('candidate', function (candidate) {
       console.log('app candidate: ', candidate);
       let icecandidate = new RTCIceCandidate(candidate);
       rtcPeerConnection.addIceCandidate(icecandidate);
     });
-
+    // ---[4]
     socket.on('offer', function (offer) {
       if (!creator) {
         rtcPeerConnection = new RTCPeerConnection(iceServers);
@@ -156,7 +159,7 @@ function App() {
         console.log('offer rtcPeerConnection: ', rtcPeerConnection);
       }
     });
-
+    // ---[6]
     socket.on('answer', function (answer) {
       rtcPeerConnection.setRemoteDescription(answer);
       console.log('answer rtcPeerConnection: ', rtcPeerConnection);
@@ -168,25 +171,44 @@ function App() {
         socket.emit('candidate', event.candidate, roomName);
       }
     }
+
     function OnTrackFunction(event) {
+      console.log('onTrackFunction event:', event);
       console.log(roomSize);
-      roomSize < 1
-        ? ((peerVideo0.current.srcObject = event.streams[0]),
-          (peerVideo0.current.onloadedmetadata = function (e) {
-            peerVideo0.current.play();
-          }),
-          peerName0.current.insertAdjacentHTML(
-            'beforeend',
-            `<div>ID3 : ${roomUser[socket.id]}</div>`
-          ))
-        : ((peerVideo1.current.srcObject = event.streams[0]),
-          (peerVideo1.current.onloadedmetadata = function (e) {
-            peerVideo1.current.play();
-          }),
-          peerName1.current.insertAdjacentHTML(
-            'beforeend',
-            `<div>ID3 : ${roomUser[socket.id]}</div>`
-          ));
+      let userArr = roomToUser[userToRoom[socket.id]];
+      let idx = userArr.indexOf(socket.id);
+      console.log(userArr, 'idx: ', idx);
+
+      if (roomSize % idx === 0) {
+        peerVideo1.current.srcObject = event.streams[0];
+        peerVideo1.current.onloadedmetadata = function (e) {
+          peerVideo1.current.play();
+        };
+        peerName1.current.insertAdjacentHTML(
+          'beforeend',
+          `<div>ID1 : ${userArr[1]}</div>`
+        );
+      } else if (roomSize % idx === 2) {
+        peerVideo2.current.srcObject = event.streams[0];
+        peerVideo2.current.onloadedmetadata = function (e) {
+          peerVideo2.current.play();
+        };
+        peerName2.current.insertAdjacentHTML(
+          'beforeend',
+          `<div>ID2 : ${userArr[2]}</div>`
+        );
+      } else if (idx === 3) {
+        peerVideo3.current.srcObject = event.streams[0];
+        peerVideo3.current.onloadedmetadata = function (e) {
+          peerVideo3.current.play();
+        };
+        peerName3.current.insertAdjacentHTML(
+          'beforeend',
+          `<div>ID3 : ${userArr[3]}</div>`
+        );
+      } else {
+        console.log("There's no room for me.", socket.id, roomSize);
+      }
     }
   }, []);
 
@@ -206,26 +228,24 @@ function App() {
           </button>
         </div>
       )}
-      {enterRoom && (
-        <div id="video-chat-room">
-          <div>
-            <video ref={userVideo} id="user-video"></video>
-            <div ref={userName} style={{ textAlign: 'center' }}></div>
-          </div>
-          <div>
-            <video ref={peerVideo0} id="peer-video0"></video>
-            <div ref={peerName0} style={{ textAlign: 'center' }}></div>
-          </div>
-          <div>
-            <video ref={peerVideo1} id="peer-video1"></video>
-            <div ref={peerName1} style={{ textAlign: 'center' }}></div>
-          </div>
-          <div>
-            <video ref={peerVideo2} id="peer-video2"></video>
-            <div ref={peerName2} style={{ textAlign: 'center' }}></div>
-          </div>
+      <div id="video-chat-room">
+        <div>
+          <video ref={userVideo} id="user-video"></video>
+          <div ref={userName} style={{ textAlign: 'center' }}></div>
         </div>
-      )}
+        <div>
+          <video ref={peerVideo1} id="peer-video1"></video>
+          <div ref={peerName1} style={{ textAlign: 'center' }}></div>
+        </div>
+        <div>
+          <video ref={peerVideo2} id="peer-video2"></video>
+          <div ref={peerName2} style={{ textAlign: 'center' }}></div>
+        </div>
+        <div>
+          <video ref={peerVideo3} id="peer-video3"></video>
+          <div ref={peerName3} style={{ textAlign: 'center' }}></div>
+        </div>
+      </div>
     </>
   );
 }
