@@ -49,6 +49,9 @@ function App() {
     // first user
     socket.on('created', (data) => {
       creator = true;
+      roomSize = data.roomSize;
+      UserToRoom = data.UserToRoom;
+      roomToUser = data.roomToUser;
 
       const { roomSize, userToRoom, roomToUser } = data;
       console.log('created', roomSize, userToRoom, roomToUser);
@@ -76,6 +79,7 @@ function App() {
     });
 
     /// joined user
+
     socket.on('joined', (data) => {
       creator = false;
       const { joinId, roomSize, userToRoom, roomToUser } = data;

@@ -31,8 +31,8 @@ io.on('connection', function (socket) {
     let rooms = io.sockets.adapter.rooms;
     let room = rooms.get(roomName);
 
-    //room == undefined when no such room exists.
-    if (room == undefined) {
+    //room === undefined when no such room exists.
+    if (room === undefined) {
       userToRoom[socket.id] = roomName + '-C';
       roomToUser[roomName] = [socket.id];
       console.log('created:', userToRoom, roomToUser);
@@ -40,6 +40,7 @@ io.on('connection', function (socket) {
       socket.emit('created', {
         roomSize: room?.size,
         userToRoom: userToRoom,
+
         roomToUser: roomToUser,
       });
     } else if (room.size <= 8) {
@@ -53,6 +54,7 @@ io.on('connection', function (socket) {
         joinId: socket.id,
         roomSize: room?.size,
         userToRoom: userToRoom,
+
         roomToUser: roomToUser,
       });
     } else {
