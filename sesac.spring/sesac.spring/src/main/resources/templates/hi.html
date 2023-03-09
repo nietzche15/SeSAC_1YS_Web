@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="'안녕하세요. ' + ${msg}">안녕 반가워</p>
+<br>
+<p th:utext="${utext}">p태그</p>
+<br>
+<button th:value="${msg2}" />
+<div th:with="temp=${msg2}" th:text="${temp}"/>
+
+<div th:switch="${msg2}">
+    <p th:case="'admin'">msg2 to admin</p>
+    <p th:case="'manager'">msg2 to manager</p>
+    <p th:case="*">msg2 to others</p>
+</div>
+<!--<span th:with="msg2='안녕? + ${msg}" th:text="${msg2}"></span>-->
+</body>
+</html>
