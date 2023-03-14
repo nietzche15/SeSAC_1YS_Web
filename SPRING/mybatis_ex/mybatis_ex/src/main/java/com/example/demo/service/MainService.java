@@ -41,7 +41,7 @@ public class MainService {
         user.setName(result.getName());
         user.setNickname(result.getNickname());
         user.setNo(1);
-        
+
         return user;
     }
 }
