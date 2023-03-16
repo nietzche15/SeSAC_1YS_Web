@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <meta charset="UTF-8">
+    <title>Log In</title>
+  <script>
+    function login(){
+      var form = document.getElementById("form_login");
+      var data = {
+        id : form.id.value,
+        pw : form.pw.value,
+      };
+
+      axios.post(`/person/login`,data)
+      .then((res)=>{
+        console.log("login data: ", res.data);
+
+        if( res.data ){
+          alert('Welcome!');
+          form.action = "/person/userinfo";
+          form.method = "post";
+          form.submit();
+<!--          document.location.href = "/person/userinfo";-->
+        }else{
+          alert('Invalid ID or PASSWORD!');
+          form.reset();
+        }
+      })
+   }
+  </script>
+</head>
+<body>
+<form id="form_login" style="text-align:center">
+  <fieldset>
+    <legend>Log In</legend>
+    <input type="text" placeholder="ID" name="id">
+    <br>
+    <input type="password" placeholder="PASSWORD" name="pw">
+    <br>
+    <br>
+    <button type="button" onclick="document.location.href='/person/register';">Go 회원가입</button>
+    <button type="button" style="visibility: hidden">.</button>
+    <button type="button" onclick="login();">로그인</button>
+  </fieldset>
+</form>
+
+</body>
+</html>
