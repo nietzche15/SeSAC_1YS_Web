@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hi</title>
+    <script>
+        const showMsg = (msg)=>{ console.log("msg : ", msg); }
+    </script>
+</head>
+<body>
+<!--    <p th:text="'안녕하세요. ' + ${msg}">p태그1</p>-->
+<!--    <p th:utext="${msg2}">p태그2</p>-->
+<!--    <p th:value="${msg3}">p태그3</p>-->
+<!--    <p th:with="temp=${msg3}" th:text="${temp}">p태그4</p>-->
+<!--    <button th:value="${msg3}" onclick="showMsg(this.value);">Click</button>-->
+<!--    <br>-->
+<!--<div th:switch="${msg1}">-->
+<!--    <p th:case="'Hello'">This msg is 'Hello'</p>-->
+<!--    <p th:case="'Goodbye'">This msg is 'Goodbye'</p>-->
+<!--    <p th:case="*">This msg is NEITHER 'Hello' NOR 'Goodbye'</p>-->
+<!--</div>-->
+
+<!--<p th:if="${msg2}=='Goodbye'" th:text="GoodNight"></p>-->
+<!--<p th:unless="${msg2}=='Goodbye'" th:text="GoodMorning"></p>-->
+
+<!--<p th:with="temp=${msg3}" th:text="${temp}">p태그4</p>-->
+
+<!--<div th:switch="${temp}">-->
+<!--    <p th:case="'Hello'">This msg is 'Hello'</p>-->
+<!--    <p th:case="'Goodbye'">This msg is 'Goodbye'</p>-->
+<!--    <p th:case="*">This msg is NEITHER 'Hello' NOR 'Goodbye'</p>-->
+<!--</div>-->
+
+<ul>
+    <li th:each="name:${names}">
+        <span th:text="${name}">이름</span>
+    </li>
+</ul>
+
+</body>
+</html>
+
